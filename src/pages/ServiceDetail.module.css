@@ -1,0 +1,430 @@
+/* ─────────────────────────────────────────
+   Service Detail Page
+───────────────────────────────────────── */
+
+/* ─── Not Found ─── */
+.notFound {
+  padding: 110px 24px 80px;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.notFoundEyebrow {
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--blue2);
+  margin: 0 0 12px;
+}
+
+.notFound h1 {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin: 0 0 16px;
+}
+
+.notFoundCopy {
+  color: #5c6166;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 32px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 28px;
+  height: 48px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: background .2s ease;
+}
+
+.backBtn:hover {
+  background: var(--blue2);
+}
+
+/* ─── Page wrapper ─── */
+.page {
+  /* sections handle their own padding and backgrounds */
+}
+
+/* ─── Hero ─── */
+.hero {
+  background: #050505;
+  padding-top: 110px;
+  animation: heroIn .7s ease both;
+}
+
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.heroWrap {
+  width: min(1060px, 100%);
+  margin: 0 auto;
+  padding: 48px 40px 0;
+}
+
+/* Breadcrumb link */
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, .42);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 36px;
+  transition: color .2s ease;
+}
+
+.breadcrumb:hover {
+  color: var(--blue2);
+}
+
+/* Two-column grid: text left, image right */
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding-bottom: 56px;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroNumber {
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--blue2);
+  margin-bottom: 14px;
+}
+
+.heroTitle {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(44px, 6.5vw, 92px);
+  line-height: .9;
+  letter-spacing: -.04em;
+  color: #fff;
+  margin: 0 0 24px;
+}
+
+.heroIntro {
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, .68);
+  margin: 0;
+  max-width: 440px;
+}
+
+/* Hero image column — blue-framed card */
+.heroImageCol {
+  border-radius: 16px;
+  overflow: hidden;
+  height: 340px;
+  box-shadow:
+    0 0 0 3px var(--blue),
+    0 24px 60px rgba(0, 0, 0, .45);
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.heroImgPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a1a2e 0%, #003d68 100%);
+}
+
+/* ─── Content section ─── */
+.content {
+  background: #fff;
+  padding: 80px 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.content.contentVisible {
+  opacity: 1;
+  transform: none;
+}
+
+.contentInner {
+  width: min(1060px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+/* Section label */
+.sectionLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 28px;
+}
+
+/* ─── Bullet list ─── */
+.bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f2f4;
+  font-size: 15px;
+  color: #1a1a1a;
+  line-height: 1.5;
+  font-weight: 500;
+  /* Staggered slide-in on reveal */
+  opacity: 0;
+  transform: translateX(-14px);
+  transition:
+    opacity .42s ease calc(var(--i, 0) * 80ms),
+    transform .42s ease calc(var(--i, 0) * 80ms);
+}
+
+.content.contentVisible .bullet {
+  opacity: 1;
+  transform: none;
+}
+
+.bullet:first-child {
+  padding-top: 0;
+}
+
+.bullet:last-child {
+  border-bottom: none;
+}
+
+.bulletDot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  margin-top: 5px;
+}
+
+/* ─── What this helps with ─── */
+.helpsCopy {
+  font-size: 15px;
+  line-height: 1.88;
+  color: #5c6166;
+  margin: 0;
+}
+
+/* ─── CTA section ─── */
+.cta {
+  padding: 88px 40px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(0, 149, 223, .38), transparent 68%),
+    var(--blue);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.cta.ctaVisible {
+  opacity: 1;
+  transform: none;
+}
+
+.ctaInner {
+  width: min(560px, 100%);
+  margin: 0 auto;
+}
+
+.ctaEyebrow {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .65);
+  margin: 0 0 12px;
+}
+
+.ctaHeading {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(44px, 7vw, 88px);
+  line-height: .9;
+  letter-spacing: -.04em;
+  color: #fff;
+  margin: 0 0 18px;
+}
+
+.ctaSub {
+  color: rgba(255, 255, 255, .72);
+  font-size: 15px;
+  line-height: 1.75;
+  margin: 0 0 36px;
+}
+
+.ctaBtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Primary CTA — white pill */
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 44px;
+  height: 54px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .14);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.ctaBtn:hover {
+  background: #f0f8ff;
+  transform: translateY(-2px);
+}
+
+/* Secondary CTA — ghost pill */
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  height: 54px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border: 1.5px solid rgba(255, 255, 255, .36);
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.ctaSecondary:hover {
+  background: rgba(255, 255, 255, .24);
+  border-color: rgba(255, 255, 255, .60);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1000px) {
+  .notFound {
+    padding-top: 224px;
+  }
+
+  .hero {
+    padding-top: 224px;
+  }
+
+  .heroWrap {
+    padding: 36px 20px 0;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-bottom: 40px;
+  }
+
+  .heroImageCol {
+    height: 260px;
+  }
+
+  .content {
+    padding: 60px 20px;
+  }
+
+  .contentInner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .cta {
+    padding: 64px 20px;
+  }
+}
+
+@media (max-width: 680px) {
+  .heroWrap {
+    padding: 28px 16px 0;
+  }
+
+  .heroGrid {
+    gap: 28px;
+    padding-bottom: 32px;
+  }
+
+  .heroImageCol {
+    height: 220px;
+  }
+
+  .content {
+    padding: 48px 16px;
+  }
+
+  .cta {
+    padding: 56px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    animation: none;
+  }
+
+  .content,
+  .cta {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .bullet {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

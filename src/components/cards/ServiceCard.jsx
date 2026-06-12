@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import styles from './ServiceCard.module.css'
 
@@ -6,16 +7,17 @@ export default function ServiceCard({
   title,
   shortDescription,
   image,
+  slug,
   index = 0,
   sectionVisible = false,
 }) {
   const [imgError, setImgError] = useState(false)
 
-  return (
-    <article
-      className={`${styles.card} ${sectionVisible ? styles.visible : ''}`}
-      style={{ '--i': index }}
-    >
+  const cls = `${styles.card} ${sectionVisible ? styles.visible : ''}`
+  const style = { '--i': index }
+
+  const inner = (
+    <>
       {image && !imgError ? (
         <div className={styles.imageWrapper}>
           <img
@@ -33,6 +35,16 @@ export default function ServiceCard({
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{shortDescription}</p>
       </div>
+    </>
+  )
+
+  return slug ? (
+    <Link to={`/services/${slug}`} className={cls} style={style} aria-label={title}>
+      {inner}
+    </Link>
+  ) : (
+    <article className={cls} style={style}>
+      {inner}
     </article>
   )
 }
