@@ -30,7 +30,7 @@ export default function AboutSection() {
           <h2>
             Creative Digital<br />
             And Technology<br />
-            <span className={styles.grey}>Solutions</span>
+            <span className={styles.blue}>Solutions</span>
           </h2>
         </div>
 

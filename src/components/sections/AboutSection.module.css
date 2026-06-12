@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────
-   About Section
+   About Section — Creative Digital Section
 ───────────────────────────────────────── */
 
 .section {
@@ -28,22 +28,50 @@
   width: 220px;
   height: 145px;
   object-fit: cover;
-  border: 8px solid #fff;
+  /* White inner border + blue outer ring — designed, not just a border */
+  border: 4px solid #fff;
   border-radius: 16px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, .14);
+  box-shadow:
+    0 0 0 3px var(--blue),
+    0 20px 50px rgba(0, 0, 0, .18),
+    0 0 22px rgba(0, 118, 191, .18);
+  transition: box-shadow .3s ease;
+  will-change: transform;
 }
 
-/* Both images at the top corners — well above the paragraph copy */
+/* Hover: pause float mid-movement + strengthen blue glow */
+.floatImg:hover {
+  animation-play-state: paused;
+  box-shadow:
+    0 0 0 3px var(--blue2),
+    0 28px 60px rgba(0, 0, 0, .24),
+    0 0 32px rgba(0, 149, 223, .32);
+}
+
+/* Left image — floats gently upward */
 .left {
   left: 0;
-  top: 36px;
-  transform: rotate(-4deg);
+  top: 24px;
+  animation: floatLeft 6s ease-in-out infinite;
 }
 
+/* Right image — offset phase so they don't float in sync */
 .right {
   right: 0;
-  top: 72px;    /* moved from bottom:-28px — no longer overlaps copy */
-  transform: rotate(3deg);
+  top: 36px;
+  animation: floatRight 7s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+/* Rotation held constant in keyframes — only Y translates */
+@keyframes floatLeft {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50%       { transform: rotate(-4deg) translateY(-10px); }
+}
+
+@keyframes floatRight {
+  0%, 100% { transform: rotate(3deg) translateY(0); }
+  50%       { transform: rotate(3deg) translateY(-12px); }
 }
 
 /* ─── Headline ─── */
@@ -83,8 +111,9 @@
   letter-spacing: -.04em;
 }
 
-.grey {
-  color: #bbb;
+/* "Solutions" — The Web House blue */
+.blue {
+  color: var(--blue);
 }
 
 /* ─── Body copy ─── */
@@ -136,5 +165,18 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  /* Stop float — hold rotation statically */
+  .floatImg {
+    animation: none;
+  }
+
+  .left {
+    transform: rotate(-4deg);
+  }
+
+  .right {
+    transform: rotate(3deg);
   }
 }
