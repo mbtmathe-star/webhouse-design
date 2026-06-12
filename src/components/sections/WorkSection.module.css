@@ -14,80 +14,82 @@
   padding: 80px 30px;
 }
 
-/* Background image overlay */
+/* Background image */
 .work::before {
   content: '';
   position: absolute;
   inset: 0;
   background: url('/images/portfolio/work-background.jpg') center / cover no-repeat;
-  opacity: .58;
+  opacity: .52;
 }
 
-/* Dark gradient over background */
+/* Dark gradient overlay */
 .work::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .30), rgba(0, 0, 0, .70));
+  background: linear-gradient(180deg, rgba(0, 0, 0, .28) 0%, rgba(0, 0, 0, .68) 100%);
 }
 
-/* ─── Scrolling marquee text ─── */
+/* ─── Marquee ticker — moved to bottom, subtle ─── */
 .marquee {
   position: absolute;
   z-index: 2;
-  top: 50%;
+  bottom: 24px;
   left: 0;
-  transform: translateY(-50%);
   width: 100%;
   white-space: nowrap;
-  color: #b4b4b4;
-  font-size: 20px;
-  opacity: .75;
-  pointer-events: none;
   overflow: hidden;
+  color: rgba(255, 255, 255, .35);
+  font-size: 13px;
+  letter-spacing: .04em;
+  pointer-events: none;
 }
 
 /* ─── Central card ─── */
 .workCard {
   position: relative;
   z-index: 3;
-  max-width: 560px;
+  max-width: 520px;
   padding: 0 20px;
 }
 
 .workCard h2 {
-  margin: 0 0 28px;
+  margin: 0 0 24px;
   font-family: Impact, 'Arial Black', sans-serif;
   text-transform: uppercase;
-  font-size: clamp(46px, 6vw, 86px);
-  line-height: .9;
+  font-size: clamp(44px, 5.8vw, 82px);
+  line-height: .92;
   letter-spacing: -.025em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, .40);
 }
 
 /* Mini portfolio image */
 .mini {
-  width: 230px;
-  height: 150px;
+  width: 210px;
+  height: 138px;
   object-fit: cover;
-  margin: 0 auto 24px;
-  border-radius: 16px;
-  border: 7px solid rgba(255, 255, 255, .12);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, .35);
+  margin: 0 auto 22px;
+  border-radius: 14px;
+  border: 6px solid rgba(255, 255, 255, .14);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .38);
+  display: block;
 }
 
 .workCard p {
-  width: min(430px, 100%);
-  margin: 0 auto 26px;
-  color: #d6d6d6;
-  line-height: 1.7;
+  width: min(400px, 100%);
+  margin: 0 auto 28px;
+  color: rgba(255, 255, 255, .80);
+  line-height: 1.72;
   font-size: 14px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .40);
 }
 
 /* Down arrow CTA */
 .down {
   display: inline-block;
   color: var(--blue2);
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 900;
   line-height: 1;
   transition: transform .2s ease;
@@ -95,4 +97,20 @@
 
 .down:hover {
   transform: translateY(4px);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 680px) {
+  .work {
+    padding: 64px 20px 72px;
+  }
+
+  .workCard h2 {
+    font-size: clamp(38px, 12vw, 56px);
+  }
+
+  .mini {
+    width: 180px;
+    height: 118px;
+  }
 }
