@@ -1,0 +1,41 @@
+:root {
+  /* Brand colours */
+  --blue: #0076bf;
+  --blue2: #0095df;
+  --grey: #5c5c5c;
+  --black: #050505;
+  --white: #fff;
+  --soft: #eef0f1;
+  --line: #e8ebed;
+  --shadow: 0 28px 90px rgba(8, 18, 28, 0.18);
+
+  /* Typography */
+  --font-sans: Arial, Helvetica, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
+
+  /* Layout */
+  --max-width: 1280px;
+  --inner-width: 1060px;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 26px;
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}

@@ -1,0 +1,43 @@
+.page {
+  padding: 72px 24px;
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.heading {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.sub {
+  color: var(--grey);
+  font-size: var(--text-sm);
+  max-width: 440px;
+  line-height: 1.75;
+}
+
+.placeholder {
+  background: var(--soft);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: 80px 24px;
+  text-align: center;
+  color: var(--grey);
+  font-size: var(--text-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 680px) {
+  .page {
+    padding: 48px 16px;
+  }
+}

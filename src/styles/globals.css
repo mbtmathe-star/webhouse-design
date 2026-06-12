@@ -1,0 +1,96 @@
+@import './variables.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--soft);
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* Shell — the main site card container */
+.shell {
+  width: min(var(--max-width), calc(100% - 60px));
+  margin: 56px auto;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Inner content constraint */
+.inner {
+  max-width: var(--inner-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Utility classes */
+.grey {
+  color: var(--grey);
+}
+
+.text-blue {
+  color: var(--blue);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1000px) {
+  .shell {
+    width: calc(100% - 26px);
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .shell {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+}

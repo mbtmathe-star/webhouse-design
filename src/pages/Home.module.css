@@ -1,0 +1,139 @@
+/* ── Hero ── */
+.hero {
+  min-height: 500px;
+  background: linear-gradient(140deg, var(--black) 0%, #0a2a45 60%, var(--blue) 100%);
+  display: flex;
+  align-items: center;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroContent {
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroHeading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.heroAccent {
+  color: var(--blue2);
+}
+
+.heroSubline {
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 500px;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+
+.heroCta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ── Services preview ── */
+.servicesSection {
+  padding: 72px 24px;
+}
+
+.splitTitle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 36px;
+}
+
+.splitTitle h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+}
+
+.splitDesc {
+  color: var(--grey);
+  font-size: var(--text-sm);
+  line-height: 1.75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.gridCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+/* ── CTA Banner ── */
+.ctaBanner {
+  background: var(--soft);
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 72px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ctaHeading {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+}
+
+.ctaSub {
+  color: var(--grey);
+  font-size: var(--text-sm);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .splitTitle {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    padding: 60px 16px;
+    min-height: 440px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCta {
+    flex-direction: column;
+  }
+
+  .heroCta > * {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .servicesSection {
+    padding: 48px 16px;
+  }
+
+  .ctaBanner {
+    padding: 56px 16px;
+  }
+}
