@@ -1,5 +1,5 @@
 .page {
-  padding: 72px 24px;
+  padding: 110px 24px 72px;
   max-width: 860px;
   margin: 0 auto;
 }
@@ -52,9 +52,15 @@
   letter-spacing: 0.04em;
 }
 
+@media (max-width: 1000px) {
+  .page {
+    padding-top: 224px;
+  }
+}
+
 @media (max-width: 680px) {
   .page {
-    padding: 48px 16px;
+    padding: 224px 16px 48px;
   }
 
   .stats {

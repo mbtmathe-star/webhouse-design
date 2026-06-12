@@ -14,7 +14,7 @@
   background-color: #0a1a2e;
 }
 
-/* Large decorative circle ring */
+/* Large decorative circle ring — anchored near top matching reference */
 .heroBefore {
   position: absolute;
   width: 980px;
@@ -22,8 +22,8 @@
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, .42);
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 80px;
+  transform: translateX(-50%);
   pointer-events: none;
   z-index: 1;
 }
@@ -184,7 +184,12 @@
 /* ─── Responsive ─── */
 @media (max-width: 1000px) {
   .hero {
-    min-height: 790px;
+    min-height: 900px;
+  }
+
+  /* Stacked nav is ~208px; push content below it */
+  .heroContent {
+    margin-top: 200px;
   }
 
   .arrow {
@@ -194,13 +199,11 @@
 
 @media (max-width: 680px) {
   .hero {
-    min-height: 760px;
+    min-height: 860px;
   }
 
-  .arrow {
-    left: 7%;
-    top: 235px;
-    transform: scale(.7);
+  .heroContent {
+    margin-top: 210px;
   }
 
   .heroContent h1 {

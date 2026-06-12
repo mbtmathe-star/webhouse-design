@@ -24,14 +24,18 @@
 }
 
 .footerLogo {
-  display: inline-block;
+  width: 230px;
   background: #fff;
   border-radius: 18px;
-  padding: 10px 18px;
-  font-weight: 900;
-  font-size: 1rem;
-  color: var(--blue);
-  letter-spacing: -.01em;
+  padding: 14px;
+  margin-bottom: 0;
+}
+
+.footerLogo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
 }
 
 .brandDesc {
@@ -45,11 +49,11 @@
 /* ─── Sitemap column ─── */
 .sitemapCol h4,
 .locationsCol h4 {
-  margin: 0 0 12px;
-  font-size: 12px;
+  margin: 0 0 16px;
+  font-size: 13px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
   color: #062139;
 }
 

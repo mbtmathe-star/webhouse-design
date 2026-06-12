@@ -4,9 +4,9 @@ export default function Hero() {
   return (
     <section className={styles.hero} aria-label="The Web House hero">
       <span className={styles.heroBefore} aria-hidden="true" />
-      <span className={styles.arrow} aria-hidden="true" />
 
       <div className={styles.heroContent}>
+        <span className={styles.arrow} aria-hidden="true" />
         <span className={styles.label}>Digital solutions that deliver</span>
         <h1>
           Helping Brands<br />

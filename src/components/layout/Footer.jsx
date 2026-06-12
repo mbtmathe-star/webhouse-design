@@ -13,11 +13,9 @@ export default function Footer() {
         {/* Column 1 — brand */}
         <div className={styles.brandCol}>
           <Link to="/" aria-label="The Web House — Home">
-            {/*
-              Replace span with <img> once logo file is added:
-                public/images/brand/web-house-logo.png
-            */}
-            <span className={styles.footerLogo}>{company.name}</span>
+            <div className={styles.footerLogo}>
+              <img src="/images/brand/web-house-logo.png" alt="The Web House" />
+            </div>
           </Link>
           <p className={styles.brandDesc}>
             A full-service creative digital and technology agency helping businesses

@@ -3,7 +3,11 @@
 ───────────────────────────────────────── */
 
 .header {
-  background: var(--soft);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   padding: 18px 18px 0;
 }
 
@@ -59,14 +63,6 @@
   object-fit: contain;
   border-radius: 8px;
   display: block;
-}
-
-.logoText {
-  font-size: 1rem;
-  font-weight: 900;
-  color: var(--blue);
-  letter-spacing: -.02em;
-  white-space: nowrap;
 }
 
 /* ─── Right nav ─── */

@@ -1,11 +1,19 @@
+import { useState } from 'react'
 import styles from './ServiceCard.module.css'
 
 export default function ServiceCard({ number, title, shortDescription, image }) {
+  const [imgError, setImgError] = useState(false)
+
   return (
     <article className={styles.card}>
-      {image ? (
+      {image && !imgError ? (
         <div className={styles.imageWrapper}>
-          <img src={image} alt={title} loading="lazy" />
+          <img
+            src={image}
+            alt=""
+            loading="lazy"
+            onError={() => setImgError(true)}
+          />
         </div>
       ) : (
         <div className={styles.imagePlaceholder} aria-hidden="true" />

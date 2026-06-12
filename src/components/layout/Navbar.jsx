@@ -16,13 +16,7 @@ export default function Navbar() {
 
         {/* Centre — logo */}
         <Link to="/" className={styles.logoLink} aria-label="The Web House — Home">
-          {/*
-            Replace span with <img> once logo file is added:
-              public/images/brand/web-house-logo.png
-            Example:
-              <img src="/images/brand/web-house-logo.png" className={styles.logo} alt="The Web House" />
-          */}
-          <span className={styles.logoText}>The Web House</span>
+          <img src="/images/brand/web-house-logo.png" className={styles.logo} alt="The Web House" />
         </Link>
 
         {/* Right — since year + CTA */}
