@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { footerLinks } from '../../data/navigation'
 import { company } from '../../data/company'
 import styles from './Footer.module.css'
 
@@ -7,49 +6,59 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.top}>
-        <div className={styles.brand}>
-          <Link to="/" className={styles.logoLink} aria-label="The Web House – Home">
-            <span className={styles.logoText}>{company.name}</span>
+    <footer className={styles.footer} id="contact">
+
+      <div className={styles.footerTop}>
+
+        {/* Column 1 — brand */}
+        <div className={styles.brandCol}>
+          <Link to="/" aria-label="The Web House — Home">
+            {/*
+              Replace span with <img> once logo file is added:
+                public/images/brand/web-house-logo.png
+            */}
+            <span className={styles.footerLogo}>{company.name}</span>
           </Link>
-          <p className={styles.tagline}>{company.tagline}</p>
-          <p className={styles.location}>{company.location}</p>
+          <p className={styles.brandDesc}>
+            A full-service creative digital and technology agency helping businesses
+            build professional brands, strong online platforms and reliable digital
+            systems.
+          </p>
         </div>
 
-        <nav className={styles.sitemap} aria-label="Footer navigation">
-          <h4 className={styles.sitemapHeading}>Sitemap</h4>
-          <ul>
-            {footerLinks.map((link) => (
-              <li key={link.to}>
-                <Link to={link.to} className={styles.sitemapLink}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className={styles.locations}>
-          <h4 className={styles.sitemapHeading}>Locations</h4>
-          <p className={styles.locationText}>{company.location}</p>
+        {/* Column 2 — sitemap */}
+        <div className={styles.sitemapCol}>
+          <h4>Sitemap</h4>
+          <nav aria-label="Footer navigation">
+            <Link to="/about">About</Link>
+            <Link to="/services">Services</Link>
+            <Link to="/portfolio">Portfolio</Link>
+            <Link to="/contact">Contact</Link>
+          </nav>
         </div>
 
-        <div className={styles.cta}>
-          <Link to="/contact" className={styles.ctaLabel}>
+        {/* Column 3 — locations + CTA */}
+        <div className={styles.locationsCol}>
+          <h4>Locations</h4>
+          {company.locations.map((loc) => (
+            <p key={loc}>{loc}</p>
+          ))}
+          <p>Serving South Africa and Namibia</p>
+          <br />
+          <Link to="/contact" className={styles.footerEmail}>
             Request a Quote
           </Link>
         </div>
+
       </div>
 
-      <div className={styles.bottom}>
-        <p className={styles.credits}>
-          &copy; {year} {company.name}. Founded {company.founded}.
-        </p>
-        <a href="#root" className={styles.backToTop}>
-          Back to top ↑
-        </a>
+      <h2 className={styles.footerBrand}>{company.name}*</h2>
+
+      <div className={styles.footerBottom}>
+        <span>&copy; {year} {company.name}. Founded {company.founded}.</span>
+        <a href="#root" className={styles.backTop}>Back to top ↑</a>
       </div>
+
     </footer>
   )
 }

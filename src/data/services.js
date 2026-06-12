@@ -1,5 +1,4 @@
-// Images go in src/assets/images/services/<slug>.jpg
-// Set image: null until the file exists; ServiceCard renders a placeholder automatically.
+// Images live in public/images/services/<slug>.jpg — served at runtime, not bundled.
 
 export const services = [
   {
@@ -9,7 +8,7 @@ export const services = [
     shortDescription:
       'Professional websites, landing pages, redesigns, maintenance, domain and hosting support.',
     slug: 'web-development',
-    image: null,
+    image: '/images/services/web-development.jpg',
     pageIntro:
       'We design and build professional websites that represent your brand and deliver results.',
     bulletPoints: [
@@ -26,7 +25,7 @@ export const services = [
     shortDescription:
       'Logo design, corporate identity, business profiles, flyers, posters and social media artwork.',
     slug: 'graphic-design',
-    image: null,
+    image: '/images/services/graphic-design.jpg',
     pageIntro:
       'We create visual identities that make your brand memorable and professional.',
     bulletPoints: [
@@ -43,7 +42,7 @@ export const services = [
     shortDescription:
       'Business cards, banners, brochures, signage, stickers, stationery and promotional material.',
     slug: 'printing',
-    image: null,
+    image: '/images/services/printing.jpg',
     pageIntro:
       'We produce quality printed materials that put your brand in front of your audience.',
     bulletPoints: [
@@ -60,7 +59,7 @@ export const services = [
     shortDescription:
       'Digital marketing strategy, content creation, campaign artwork and brand awareness support.',
     slug: 'marketing',
-    image: null,
+    image: '/images/services/marketing.jpg',
     pageIntro:
       'We help you reach your audience and grow your brand across digital platforms.',
     bulletPoints: [
@@ -77,7 +76,7 @@ export const services = [
     shortDescription:
       'Desktop support, email setup, software installation, printer support, troubleshooting and maintenance.',
     slug: 'it-desktop-support',
-    image: null,
+    image: '/images/services/it-desktop-support.jpg',
     pageIntro:
       'We keep your business technology running smoothly so you can focus on what matters.',
     bulletPoints: [
@@ -94,7 +93,7 @@ export const services = [
     shortDescription:
       'Custom business systems, web apps, workflow tools and digital platforms.',
     slug: 'software-development',
-    image: null,
+    image: '/images/services/software-development.jpg',
     pageIntro:
       'We build custom digital tools and systems that streamline your business operations.',
     bulletPoints: [
@@ -111,7 +110,7 @@ export const services = [
     shortDescription:
       'Animated adverts, logo animations, social media videos and visual motion content.',
     slug: 'motion-graphics',
-    image: null,
+    image: '/images/services/motion-graphics.jpg',
     pageIntro:
       'We bring your brand to life with engaging animated content for digital platforms.',
     bulletPoints: [
@@ -128,7 +127,7 @@ export const services = [
     shortDescription:
       'Technology planning, digital transformation advice, IT guidance and business process improvement.',
     slug: 'it-consulting',
-    image: null,
+    image: '/images/services/it-consulting.jpg',
     pageIntro:
       'We guide your business through technology decisions with clarity and expertise.',
     bulletPoints: [

@@ -1,0 +1,209 @@
+/* ─────────────────────────────────────────
+   Hero — matches approved HTML mock-up
+───────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 760px;
+  padding: 18px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, .42)),
+    url('/images/hero/web-house-hero.png') center / cover no-repeat;
+  /* Fallback while image loads or is missing */
+  background-color: #0a1a2e;
+}
+
+/* Large decorative circle ring */
+.heroBefore {
+  position: absolute;
+  width: 980px;
+  height: 980px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .42);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Decorative arrow — CSS-only */
+.arrow {
+  position: absolute;
+  z-index: 5;
+  left: 12%;
+  top: 260px;
+  width: 118px;
+  height: 38px;
+}
+
+.arrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 88px;
+  height: 12px;
+  background: var(--blue2);
+  box-shadow: 0 8px 28px rgba(0, 118, 191, .42);
+}
+
+.arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 36px;
+  height: 36px;
+  border-right: 12px solid var(--blue2);
+  border-top: 12px solid var(--blue2);
+  transform: rotate(45deg);
+  filter: drop-shadow(0 6px 16px rgba(0, 149, 223, .35));
+}
+
+/* Hero content — centered */
+.heroContent {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  width: min(980px, 96%);
+  margin: 76px auto 0;
+}
+
+/* Small label above headline */
+.label {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .13);
+  border: 1px solid rgba(255, 255, 255, .32);
+  color: rgba(255, 255, 255, .9);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Headline */
+.heroContent h1 {
+  margin: 0;
+  color: #fff;
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(54px, 8.7vw, 128px);
+  line-height: .86;
+  letter-spacing: -.052em;
+  text-shadow: 0 18px 38px rgba(0, 0, 0, .34), 0 2px 0 rgba(0, 0, 0, .08);
+}
+
+.accent {
+  color: var(--blue2);
+  text-shadow: 0 16px 40px rgba(0, 149, 223, .18), 0 2px 0 rgba(0, 0, 0, .05);
+}
+
+/* Supporting line */
+.subline {
+  width: min(620px, 92%);
+  margin: 22px auto 0;
+  color: rgba(255, 255, 255, .88);
+  font-size: 15px;
+  line-height: 1.65;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, .55);
+}
+
+/* ─── Blob orbit ─── */
+.blobOrbit {
+  position: relative;
+  width: min(420px, 72vw);
+  height: 118px;
+  margin: 26px auto 0;
+  isolation: isolate;
+}
+
+.blobOrbit::before {
+  content: '';
+  position: absolute;
+  inset: 20px 34px;
+  border: 1px solid rgba(255, 255, 255, .34);
+  border-radius: 999px;
+  transform: rotate(-5deg);
+}
+
+.blob {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  box-shadow: 0 24px 55px rgba(0, 118, 191, .26);
+  animation: webhouseFloat 6.8s ease-in-out infinite;
+}
+
+.b1 {
+  width: 138px;
+  height: 66px;
+  left: 34px;
+  top: 22px;
+  background: linear-gradient(135deg, rgba(0, 149, 223, .96), rgba(0, 78, 134, .88));
+}
+
+.b2 {
+  width: 96px;
+  height: 96px;
+  left: 168px;
+  top: 5px;
+  background: rgba(255, 255, 255, .84);
+  animation-delay: -1.4s;
+}
+
+.b3 {
+  width: 130px;
+  height: 62px;
+  right: 34px;
+  top: 40px;
+  background: linear-gradient(135deg, rgba(0, 118, 191, .92), rgba(92, 92, 92, .78));
+  animation-delay: -2.4s;
+}
+
+.b4 {
+  width: 34px;
+  height: 34px;
+  left: 276px;
+  top: 72px;
+  background: rgba(255, 255, 255, .72);
+  animation-delay: -3.2s;
+}
+
+@keyframes webhouseFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%       { transform: translate3d(0, -12px, 0) scale(1.035); }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1000px) {
+  .hero {
+    min-height: 790px;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    min-height: 760px;
+  }
+
+  .arrow {
+    left: 7%;
+    top: 235px;
+    transform: scale(.7);
+  }
+
+  .heroContent h1 {
+    font-size: 56px;
+  }
+}

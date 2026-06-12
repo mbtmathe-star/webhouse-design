@@ -1,0 +1,97 @@
+/* ─────────────────────────────────────────
+   Work / CTA Section — matches approved HTML
+───────────────────────────────────────── */
+
+.work {
+  position: relative;
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  background: #050505;
+}
+
+/* Background image overlay */
+.work::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/images/portfolio/work-background.jpg') center / cover no-repeat;
+  opacity: .58;
+}
+
+/* Dark gradient over background */
+.work::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .30), rgba(0, 0, 0, .70));
+}
+
+/* ─── Scrolling marquee text ─── */
+.marquee {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  white-space: nowrap;
+  color: #b4b4b4;
+  font-size: 20px;
+  opacity: .75;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ─── Central card ─── */
+.workCard {
+  position: relative;
+  z-index: 3;
+  max-width: 560px;
+  padding: 0 20px;
+}
+
+.workCard h2 {
+  margin: 0 0 28px;
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(46px, 6vw, 86px);
+  line-height: .9;
+  letter-spacing: -.025em;
+}
+
+/* Mini portfolio image */
+.mini {
+  width: 230px;
+  height: 150px;
+  object-fit: cover;
+  margin: 0 auto 24px;
+  border-radius: 16px;
+  border: 7px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, .35);
+}
+
+.workCard p {
+  width: min(430px, 100%);
+  margin: 0 auto 26px;
+  color: #d6d6d6;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* Down arrow CTA */
+.down {
+  display: inline-block;
+  color: var(--blue2);
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+
+.down:hover {
+  transform: translateY(4px);
+}

@@ -1,39 +1,36 @@
 import { Link, NavLink } from 'react-router-dom'
-import { navLinks } from '../../data/navigation'
+import { company } from '../../data/company'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
   return (
     <header className={styles.header}>
-      <nav className={styles.nav}>
-        <Link to="/" className={styles.logoLink} aria-label="The Web House – Home">
+      <nav className={styles.nav} aria-label="Main navigation">
+
+        {/* Left — navigation links */}
+        <div className={styles.navLinks}>
+          <NavLink to="/about" className={({ isActive }) => isActive ? styles.active : undefined}>About</NavLink>
+          <NavLink to="/services" className={({ isActive }) => isActive ? styles.active : undefined}>Services</NavLink>
+          <NavLink to="/portfolio" className={({ isActive }) => isActive ? styles.active : undefined}>Portfolio</NavLink>
+        </div>
+
+        {/* Centre — logo */}
+        <Link to="/" className={styles.logoLink} aria-label="The Web House — Home">
           {/*
-            Replace the text below with an <img> once the logo file is added:
-            <img src="/assets/images/logo/logo.png" alt="The Web House" height="36" />
+            Replace span with <img> once logo file is added:
+              public/images/brand/web-house-logo.png
+            Example:
+              <img src="/images/brand/web-house-logo.png" className={styles.logo} alt="The Web House" />
           */}
           <span className={styles.logoText}>The Web House</span>
         </Link>
 
-        <ul className={styles.navLinks}>
-          {navLinks.map((link) => (
-            <li key={link.to}>
-              <NavLink
-                to={link.to}
-                className={({ isActive }) =>
-                  [styles.navLink, isActive ? styles.active : ''].filter(Boolean).join(' ')
-                }
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-
+        {/* Right — since year + CTA */}
         <div className={styles.navRight}>
-          <Link to="/contact" className={styles.ctaBtn}>
-            Get a Quote
-          </Link>
+          <span>Since {company.founded}</span>
+          <Link to="/contact" className={styles.btn}>Contact</Link>
         </div>
+
       </nav>
     </header>
   )

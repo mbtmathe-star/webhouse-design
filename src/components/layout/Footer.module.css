@@ -1,150 +1,152 @@
+/* ─────────────────────────────────────────
+   Footer — matches approved HTML mock-up
+───────────────────────────────────────── */
+
 .footer {
-  border-top: 1px solid var(--line);
-  background: var(--white);
+  padding: 48px 46px 28px;
+  background: linear-gradient(135deg, var(--blue2), var(--blue));
+  color: #06111a;
 }
 
-.top {
+/* ─── Top grid (3 columns) ─── */
+.footerTop {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
-  gap: 48px;
-  padding: 48px 24px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 44px;
+  margin-bottom: 50px;
 }
 
-/* Brand column */
-.brand {
+/* ─── Brand column ─── */
+.brandCol {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 14px;
 }
 
-.logoLink {
-  display: inline-flex;
-}
-
-.logoText {
-  font-size: 1.05rem;
-  font-weight: 700;
+.footerLogo {
+  display: inline-block;
+  background: #fff;
+  border-radius: 18px;
+  padding: 10px 18px;
+  font-weight: 900;
+  font-size: 1rem;
   color: var(--blue);
+  letter-spacing: -.01em;
 }
 
-.tagline {
-  font-size: var(--text-sm);
-  color: var(--grey);
-}
-
-.location {
-  font-size: var(--text-xs);
-  color: var(--grey);
-  opacity: 0.75;
-}
-
-/* Sitemap / locations columns */
-.sitemap,
-.locations {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.sitemapHeading {
-  font-size: var(--text-xs);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--grey);
-}
-
-.sitemap ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 0;
+.brandDesc {
+  color: #062139;
+  font-size: 14px;
+  line-height: 1.75;
+  font-weight: 600;
   margin: 0;
 }
 
-.sitemapLink {
-  font-size: var(--text-sm);
-  color: var(--black);
-  opacity: 0.65;
-  transition: opacity var(--transition), color var(--transition);
+/* ─── Sitemap column ─── */
+.sitemapCol h4,
+.locationsCol h4 {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #062139;
 }
 
-.sitemapLink:hover {
-  opacity: 1;
-  color: var(--blue);
-}
-
-.locationText {
-  font-size: var(--text-sm);
-  color: var(--grey);
-}
-
-/* CTA column */
-.cta {
+.sitemapCol nav {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.ctaLabel {
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--blue);
-  line-height: 1.2;
-  transition: color var(--transition);
+.sitemapCol nav a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #062139;
+  opacity: .8;
+  transition: opacity .2s ease;
 }
 
-.ctaLabel:hover {
-  color: var(--blue2);
+.sitemapCol nav a:hover {
+  opacity: 1;
 }
 
-/* Bottom bar */
-.bottom {
+/* ─── Locations column ─── */
+.locationsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.locationsCol p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #062139;
+}
+
+.footerEmail {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 900;
+  color: #062139;
+  border-bottom: 2px solid rgba(6, 33, 57, .4);
+  padding-bottom: 10px;
+  margin-top: 8px;
+  transition: border-color .2s ease;
+}
+
+.footerEmail:hover {
+  border-color: #062139;
+}
+
+/* ─── Brand watermark ─── */
+.footerBrand {
+  margin: 0 0 18px;
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(70px, 12vw, 166px);
+  line-height: .82;
+  letter-spacing: -.04em;
+  color: #04101a;
+}
+
+/* ─── Bottom bar ─── */
+.footerBottom {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 14px 24px;
-  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 12px;
+  color: #062139;
+  padding-top: 14px;
+  border-top: 1px solid rgba(6, 33, 57, .2);
 }
 
-.credits {
-  font-size: var(--text-xs);
-  color: var(--grey);
+.backTop {
+  color: #062139;
+  font-weight: 600;
+  opacity: .8;
+  transition: opacity .2s ease;
 }
 
-.backToTop {
-  font-size: var(--text-xs);
-  color: var(--grey);
-  transition: color var(--transition);
+.backTop:hover {
+  opacity: 1;
 }
 
-.backToTop:hover {
-  color: var(--blue);
-}
-
-/* Responsive */
+/* ─── Responsive ─── */
 @media (max-width: 1000px) {
-  .top {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+  .footerTop {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 680px) {
-  .top {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 32px 16px;
+  .footer {
+    padding: 38px 22px 24px;
   }
 
-  .ctaLabel {
-    font-size: var(--text-xl);
-  }
-
-  .bottom {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-    padding: 14px 16px;
+  .footerEmail {
+    font-size: 21px;
   }
 }
