@@ -1,4 +1,5 @@
 export const navLinks = [
+  { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Portfolio', to: '/portfolio' },
@@ -6,6 +7,7 @@ export const navLinks = [
 ]
 
 export const footerLinks = [
+  { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Portfolio', to: '/portfolio' },
