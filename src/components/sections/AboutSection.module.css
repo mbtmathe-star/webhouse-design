@@ -1,10 +1,19 @@
 /* ─────────────────────────────────────────
-   About Section — matches approved HTML
+   About Section
 ───────────────────────────────────────── */
 
 .section {
   background: #fff;
   padding: 104px 40px;
+  /* Scroll reveal — starts hidden */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: none;
 }
 
 .inner {
@@ -24,16 +33,17 @@
   box-shadow: 0 16px 40px rgba(0, 0, 0, .14);
 }
 
+/* Both images at the top corners — well above the paragraph copy */
 .left {
   left: 0;
-  top: 40px;
+  top: 36px;
   transform: rotate(-4deg);
 }
 
 .right {
   right: 0;
-  bottom: -28px;
-  transform: rotate(4deg);
+  top: 72px;    /* moved from bottom:-28px — no longer overlaps copy */
+  transform: rotate(3deg);
 }
 
 /* ─── Headline ─── */
@@ -74,7 +84,7 @@
 }
 
 .grey {
-  color: #aaa;
+  color: #bbb;
 }
 
 /* ─── Body copy ─── */
@@ -94,7 +104,6 @@
     padding-right: 20px;
   }
 
-  /* Smaller floats so they don't crowd centered text */
   .floatImg {
     width: 160px;
     height: 106px;
@@ -102,7 +111,6 @@
 }
 
 @media (max-width: 760px) {
-  /* Hide floats when viewport is too narrow for safe clearance */
   .floatImg {
     display: none;
   }
@@ -120,5 +128,13 @@
   .copy {
     font-size: 15px;
     margin-top: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

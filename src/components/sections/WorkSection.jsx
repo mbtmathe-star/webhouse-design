@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom'
+import { useReveal } from '../../hooks/useReveal'
 import styles from './WorkSection.module.css'
 
 const MARQUEE_TEXT =
   'Request Quote ✦ Website Development ✦ Graphic Design ✦ Printing ✦ Marketing ✦ Software Development ✦ IT Support ✦ Motion Graphics ✦ IT Consulting ✦ '
 
 export default function WorkSection() {
+  const [ref, visible] = useReveal(0.08)
+
   return (
-    <section className={styles.work} id="work">
-      {/* Static marquee behind the card */}
+    <section
+      ref={ref}
+      className={`${styles.work} ${visible ? styles.visible : ''}`}
+      id="work"
+    >
       <div className={styles.marquee} aria-hidden="true">
         {MARQUEE_TEXT.repeat(3)}
       </div>
@@ -18,10 +24,6 @@ export default function WorkSection() {
           Together
         </h2>
 
-        {/*
-          Work sample image — add file to enable:
-            public/images/portfolio/work-sample.jpg
-        */}
         <img
           className={styles.mini}
           src="/images/portfolio/work-sample.jpg"

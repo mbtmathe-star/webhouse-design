@@ -1,118 +1,117 @@
 /* ─────────────────────────────────────────
-   Footer — matches approved HTML mock-up
+   Footer — white background
 ───────────────────────────────────────── */
 
 .footer {
-  padding: 48px 46px 28px;
-  background: linear-gradient(135deg, var(--blue2), var(--blue));
-  color: #06111a;
+  padding: 56px 46px 32px;
+  background: #fff;
+  color: #1a1a1a;
+  border-top: 1px solid #e8eaec;
 }
 
-/* ─── Top grid (3 columns) ─── */
+/* ─── Top grid ─── */
 .footerTop {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 44px;
-  margin-bottom: 50px;
+  gap: 48px;
+  margin-bottom: 48px;
 }
 
 /* ─── Brand column ─── */
 .brandCol {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
+/* Logo sits directly on white — no pill wrapper needed */
 .footerLogo {
-  width: 230px;
-  background: #fff;
-  border-radius: 18px;
-  padding: 14px;
-  margin-bottom: 0;
+  width: 180px;
 }
 
 .footerLogo img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
 }
 
 .brandDesc {
-  color: #062139;
+  color: #5a5f64;
   font-size: 14px;
-  line-height: 1.75;
-  font-weight: 600;
+  line-height: 1.80;
+  font-weight: 400;
   margin: 0;
+  max-width: 260px;
 }
 
 /* ─── Sitemap column ─── */
 .sitemapCol h4,
 .locationsCol h4 {
   margin: 0 0 16px;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .08em;
-  color: #062139;
+  letter-spacing: .10em;
+  color: var(--blue);
 }
 
 .sitemapCol nav {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .sitemapCol nav a {
   font-size: 14px;
-  font-weight: 600;
-  color: #062139;
-  opacity: .8;
-  transition: opacity .2s ease;
+  font-weight: 500;
+  color: #333;
+  transition: color .2s ease;
 }
 
 .sitemapCol nav a:hover {
-  opacity: 1;
+  color: var(--blue);
 }
 
 /* ─── Locations column ─── */
 .locationsCol {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .locationsCol p {
   margin: 0;
   font-size: 14px;
-  font-weight: 600;
-  color: #062139;
+  color: #555;
 }
 
 .footerEmail {
   display: inline-block;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 900;
-  color: #062139;
-  border-bottom: 2px solid rgba(6, 33, 57, .4);
-  padding-bottom: 10px;
-  margin-top: 8px;
-  transition: border-color .2s ease;
+  color: var(--blue);
+  border-bottom: 2px solid rgba(0, 118, 191, .28);
+  padding-bottom: 8px;
+  margin-top: 10px;
+  transition: color .2s ease, border-color .2s ease;
 }
 
 .footerEmail:hover {
-  border-color: #062139;
+  color: var(--blue2);
+  border-color: var(--blue2);
 }
 
 /* ─── Brand watermark ─── */
 .footerBrand {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   font-family: Impact, 'Arial Black', sans-serif;
   text-transform: uppercase;
   font-size: clamp(70px, 12vw, 166px);
   line-height: .82;
   letter-spacing: -.04em;
-  color: #04101a;
+  /* Very light — watermark only, not foreground content */
+  color: #eaecee;
+  user-select: none;
 }
 
 /* ─── Bottom bar ─── */
@@ -120,41 +119,40 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 16px;
   font-size: 12px;
-  color: #062139;
-  padding-top: 14px;
-  border-top: 1px solid rgba(6, 33, 57, .2);
+  color: #999;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, .07);
 }
 
 .backTop {
-  color: #062139;
+  color: var(--blue);
   font-weight: 600;
-  opacity: .8;
-  transition: opacity .2s ease;
+  transition: color .2s ease;
 }
 
 .backTop:hover {
-  opacity: 1;
+  color: var(--blue2);
 }
 
 /* ─── Responsive ─── */
 @media (max-width: 1000px) {
   .footerTop {
     grid-template-columns: 1fr;
+    gap: 36px;
   }
 }
 
 @media (max-width: 680px) {
   .footer {
-    padding: 38px 20px 24px;
+    padding: 44px 20px 28px;
   }
 
   .footerEmail {
-    font-size: 21px;
+    font-size: 20px;
   }
 
-  /* Prevent footerBrand overflowing at 360px–390px */
   .footerBrand {
     font-size: clamp(40px, 10.5vw, 60px);
   }

@@ -1,10 +1,17 @@
 import { services } from '../../data/services'
+import { useReveal } from '../../hooks/useReveal'
 import ServiceCard from '../cards/ServiceCard'
 import styles from './ServicesSection.module.css'
 
 export default function ServicesSection() {
+  const [ref, visible] = useReveal(0.06)
+
   return (
-    <section className={styles.services} id="services">
+    <section
+      ref={ref}
+      className={`${styles.services} ${visible ? styles.visible : ''}`}
+      id="services"
+    >
       <div className={styles.inner}>
 
         <div className={styles.splitTitle}>
@@ -18,8 +25,13 @@ export default function ServicesSection() {
         </div>
 
         <div className={styles.grid}>
-          {services.map((service) => (
-            <ServiceCard key={service.id} {...service} />
+          {services.map((service, i) => (
+            <ServiceCard
+              key={service.id}
+              {...service}
+              index={i}
+              sectionVisible={visible}
+            />
           ))}
         </div>
 

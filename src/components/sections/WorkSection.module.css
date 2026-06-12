@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────
-   Work / CTA Section — matches approved HTML
+   Work / CTA Section
 ───────────────────────────────────────── */
 
 .work {
@@ -12,6 +12,13 @@
   color: #fff;
   background: #050505;
   padding: 80px 30px;
+  /* Scroll reveal */
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+
+.work.visible {
+  opacity: 1;
 }
 
 /* Background image */
@@ -31,7 +38,7 @@
   background: linear-gradient(180deg, rgba(0, 0, 0, .28) 0%, rgba(0, 0, 0, .68) 100%);
 }
 
-/* ─── Marquee ticker — moved to bottom, subtle ─── */
+/* ─── Marquee ticker — bottom, subtle ─── */
 .marquee {
   position: absolute;
   z-index: 2;
@@ -64,7 +71,6 @@
   text-shadow: 0 4px 20px rgba(0, 0, 0, .40);
 }
 
-/* Mini portfolio image */
 .mini {
   width: 210px;
   height: 138px;
@@ -85,7 +91,6 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, .40);
 }
 
-/* Down arrow CTA */
 .down {
   display: inline-block;
   color: var(--blue2);
@@ -99,7 +104,6 @@
   transform: translateY(4px);
 }
 
-/* ─── Responsive ─── */
 @media (max-width: 680px) {
   .work {
     padding: 64px 20px 72px;
@@ -112,5 +116,12 @@
   .mini {
     width: 180px;
     height: 118px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work {
+    opacity: 1;
+    transition: none;
   }
 }

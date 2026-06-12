@@ -1,11 +1,21 @@
 import { useState } from 'react'
 import styles from './ServiceCard.module.css'
 
-export default function ServiceCard({ number, title, shortDescription, image }) {
+export default function ServiceCard({
+  number,
+  title,
+  shortDescription,
+  image,
+  index = 0,
+  sectionVisible = false,
+}) {
   const [imgError, setImgError] = useState(false)
 
   return (
-    <article className={styles.card}>
+    <article
+      className={`${styles.card} ${sectionVisible ? styles.visible : ''}`}
+      style={{ '--i': index }}
+    >
       {image && !imgError ? (
         <div className={styles.imageWrapper}>
           <img

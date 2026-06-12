@@ -1,19 +1,41 @@
 /* ─────────────────────────────────────────
-   ServiceCard — matches approved HTML cards
+   ServiceCard — white card on blue section
 ───────────────────────────────────────── */
 
 .card {
   position: relative;
   min-height: 340px;
-  border: 1px solid rgba(0, 118, 191, .10);
   border-radius: 16px;
-  background: #f8fbfd;
+  background: #fff;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  /* Shadow gives depth against blue background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .14);
+  /* Scroll reveal — staggered via CSS custom property --i */
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity  .52s ease calc(var(--i, 0) * 70ms),
+    transform .52s ease calc(var(--i, 0) * 70ms),
+    box-shadow .22s ease,
+    transform  .22s ease;
 }
 
-/* Blue gradient top bar */
+/* Revealed state */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover lift — only after reveal */
+.card.visible:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, .22);
+  transition-delay: 0s, 0s, 0s, 0s;
+}
+
+/* Blue gradient top accent bar */
 .card::before {
   content: '';
   position: absolute;
@@ -65,7 +87,7 @@
   font-weight: 900;
   margin-bottom: 14px;
   flex-shrink: 0;
-  box-shadow: 0 8px 20px rgba(0, 60, 100, .18);
+  box-shadow: 0 6px 18px rgba(0, 50, 100, .18);
 }
 
 /* Service title */
@@ -83,8 +105,21 @@
 /* Description */
 .description {
   margin: 0;
-  color: #616569;
-  line-height: 1.60;
+  color: #606469;
+  line-height: 1.62;
   font-size: 13px;
   flex: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: box-shadow .2s ease;
+  }
+
+  .card.visible:hover {
+    transform: none;
+    transition-delay: 0s;
+  }
 }

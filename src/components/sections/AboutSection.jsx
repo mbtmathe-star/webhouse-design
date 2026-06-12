@@ -1,16 +1,17 @@
+import { useReveal } from '../../hooks/useReveal'
 import styles from './AboutSection.module.css'
 
 export default function AboutSection() {
+  const [ref, visible] = useReveal(0.08)
+
   return (
-    <section className={styles.section} id="about">
+    <section
+      ref={ref}
+      className={`${styles.section} ${visible ? styles.visible : ''}`}
+      id="about"
+    >
       <div className={styles.inner}>
 
-        {/*
-          Float images — add files to enable:
-            public/images/about/about-left.jpg
-            public/images/about/about-right.jpg
-          Hidden on mobile via CSS.
-        */}
         <img
           className={`${styles.floatImg} ${styles.left}`}
           src="/images/about/about-left.jpg"
