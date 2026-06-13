@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { services } from '../data/services'
 import { useReveal } from '../hooks/useReveal'
+import ServiceRequestForm from '../components/forms/ServiceRequestForm'
 import styles from './ServiceDetail.module.css'
 
 function NotFound() {
@@ -22,7 +23,7 @@ export default function ServiceDetail() {
   const service = services.find((s) => s.slug === slug)
   const [imgError, setImgError] = useState(false)
   const [contentRef, contentVisible] = useReveal(0.05)
-  const [ctaRef, ctaVisible] = useReveal(0.1)
+  const [formRef, formVisible] = useReveal(0.04)
 
   if (!service) return <NotFound />
 
@@ -39,6 +40,9 @@ export default function ServiceDetail() {
               <div className={styles.heroNumber}>{service.number}</div>
               <h1 className={styles.heroTitle}>{service.title}</h1>
               <p className={styles.heroIntro}>{service.pageIntro}</p>
+              <a href="#request-form" className={styles.heroScrollBtn}>
+                Request a Quote
+              </a>
             </div>
 
             <div className={styles.heroImageCol}>
@@ -93,23 +97,26 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* ─── CTA ─── */}
+      {/* ─── Inline Request Form ─── */}
       <section
-        ref={ctaRef}
-        className={`${styles.cta} ${ctaVisible ? styles.ctaVisible : ''}`}
+        id="request-form"
+        ref={formRef}
+        className={`${styles.formSection} ${formVisible ? styles.formVisible : ''}`}
       >
-        <div className={styles.ctaInner}>
-          <p className={styles.ctaEyebrow}>Ready to get started?</p>
-          <h2 className={styles.ctaHeading}>
-            Request<br />a Quote
-          </h2>
-          <p className={styles.ctaSub}>
-            Tell us about your {service.title.toLowerCase()} requirements and
-            we&apos;ll prepare a tailored quotation for you.
-          </p>
-          <div className={styles.ctaBtns}>
-            <Link to="/contact" className={styles.ctaBtn}>Request a Quote</Link>
-            <Link to="/services" className={styles.ctaSecondary}>All Services</Link>
+        <div className={styles.formWrap}>
+          <div className={styles.formHeader}>
+            <p className={styles.formEyebrow}>Ready to get started?</p>
+            <h2 className={styles.formHeading}>
+              Request a Quote
+            </h2>
+            <p className={styles.formSub}>
+              Tell us about your {service.title.toLowerCase()} requirements and
+              we&apos;ll prepare a tailored quotation for you.
+            </p>
+          </div>
+          <ServiceRequestForm key={service.slug} service={service} />
+          <div className={styles.formFootNote}>
+            <Link to="/services" className={styles.allServicesLink}>← All Services</Link>
           </div>
         </div>
       </section>

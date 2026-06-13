@@ -1,0 +1,428 @@
+/* ─────────────────────────────────────────
+   Service Request Form
+───────────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Step card ─── */
+.step {
+  border: 1.5px solid #e8eaec;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 22px 28px;
+  background: #fafbfc;
+  border-bottom: 1.5px solid #e8eaec;
+}
+
+.stepNum {
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: 30px;
+  letter-spacing: -.02em;
+  color: var(--blue);
+  line-height: 1;
+  min-width: 42px;
+  padding-top: 2px;
+}
+
+.stepTitle {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 17px;
+  letter-spacing: -.01em;
+  color: var(--black);
+  margin: 0 0 4px;
+  line-height: 1;
+}
+
+.stepSub {
+  font-size: 13px;
+  color: #7a8087;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.stepBody {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+}
+
+/* ─── Two-column rows (Step 01 shared fields) ─── */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ─── Field ─── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #3a3f45;
+}
+
+.req {
+  color: var(--blue);
+}
+
+/* ─── Shared control styles ─── */
+.input,
+.select,
+.textarea {
+  padding: 13px 16px;
+  border: 1.5px solid #e2e5e8;
+  border-radius: 10px;
+  background: #fafbfc;
+  font-size: 14px;
+  color: var(--black);
+  font-family: inherit;
+  line-height: 1.4;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.input:hover:not(:focus),
+.select:hover:not(:focus),
+.textarea:hover:not(:focus) {
+  border-color: #b8bfc8;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--blue);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 118, 191, .09);
+}
+
+/* Validation error */
+.inputError {
+  border-color: #e53e3e !important;
+  box-shadow: 0 0 0 4px rgba(229, 62, 62, .08) !important;
+  background: #fff !important;
+}
+
+.errorMsg {
+  font-size: 12px;
+  color: #e53e3e;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+/* Textarea */
+.textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* Select */
+.selectWrap {
+  position: relative;
+}
+
+.selectWrap::after {
+  content: '▾';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--blue);
+  font-size: 14px;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+}
+
+/* ─── File upload zone ─── */
+.fileZone {
+  border: 2px dashed #d0d5db;
+  border-radius: 14px;
+  padding: 36px 24px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafbfc;
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.fileZone:hover,
+.fileZone:focus {
+  border-color: var(--blue);
+  background: #f0f7fc;
+  outline: none;
+}
+
+.fileIcon {
+  font-size: 26px;
+  color: var(--blue);
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+.fileLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.fileHint {
+  font-size: 12px;
+  color: #7a8087;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.fileInput {
+  display: none;
+}
+
+/* File list */
+.fileList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid #e8eaec;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f0f2f4;
+  background: #fff;
+}
+
+.fileItem:last-child {
+  border-bottom: none;
+}
+
+.fileDot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.fileName {
+  font-size: 13px;
+  color: #1a1a1a;
+  font-weight: 500;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileSize {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.fileNote {
+  font-size: 12px;
+  color: #aaa;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ─── Submit row ─── */
+.submitRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 48px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 12px 32px rgba(0, 118, 191, .32);
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.submitBtn:hover {
+  background: var(--blue2);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 149, 223, .40);
+}
+
+.submitBtn:active {
+  transform: translateY(0);
+}
+
+.submitNote {
+  font-size: 12px;
+  color: #aaa;
+  margin: 0;
+}
+
+/* ─── Success card ─── */
+.successCard {
+  background: #fff;
+  border: 1.5px solid #e8eaec;
+  border-radius: 20px;
+  padding: 52px 44px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .06);
+}
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--blue2));
+  color: #fff;
+  font-size: 28px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 12px 28px rgba(0, 118, 191, .28);
+}
+
+.successHeading {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 32px;
+  letter-spacing: -.02em;
+  color: var(--black);
+  margin: 0 0 14px;
+}
+
+.successMsg {
+  font-size: 16px;
+  color: #5c6166;
+  line-height: 1.78;
+  max-width: 500px;
+  margin: 0 auto 28px;
+}
+
+.pendingNote {
+  background: #fffbf0;
+  border: 1px solid #f0d870;
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: left;
+  margin: 0 0 28px;
+}
+
+.pendingNote strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  color: #7a5a00;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 0 0 8px;
+}
+
+.pendingNote p {
+  font-size: 13px;
+  color: #8a6e1e;
+  line-height: 1.72;
+  margin: 0;
+}
+
+.resetBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  height: 48px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .2s ease;
+}
+
+.resetBtn:hover {
+  background: var(--blue2);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 760px) {
+  .stepHeader {
+    padding: 18px 20px;
+    gap: 14px;
+  }
+
+  .stepBody {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .successCard {
+    padding: 36px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submitBtn,
+  .resetBtn {
+    transition: background .2s ease;
+  }
+
+  .submitBtn:hover {
+    transform: none;
+    box-shadow: 0 12px 32px rgba(0, 118, 191, .32);
+  }
+}
