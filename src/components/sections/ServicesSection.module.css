@@ -1,13 +1,11 @@
 /* ─────────────────────────────────────────
-   Services Section — blue background
+   Services Section — light background
 ───────────────────────────────────────── */
 
 .services {
   padding: 70px 40px 110px;
-  /* Brand blue — cards read as white on blue */
-  background:
-    radial-gradient(ellipse at 78% 0%, rgba(0, 149, 223, .40), transparent 52%),
-    var(--blue);
+  /* Soft off-white — white cards sit clearly above this */
+  background: var(--soft);
   /* Scroll reveal */
   opacity: 0;
   transform: translateY(40px);
@@ -40,7 +38,7 @@
   font-size: clamp(38px, 5.5vw, 80px);
   line-height: .92;
   letter-spacing: -.04em;
-  color: #fff;
+  color: var(--black);
 }
 
 .right {
@@ -49,7 +47,7 @@
 
 .splitTitle p {
   margin: 0;
-  color: rgba(255, 255, 255, .88);
+  color: #5c6166;
   line-height: 1.75;
   font-size: 14px;
 }
