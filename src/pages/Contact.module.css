@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────
-   Contact / Request a Quote Page
+   Contact / General Enquiry Page
 ───────────────────────────────────────── */
 
 .page {
@@ -78,260 +78,94 @@
   align-items: start;
 }
 
-/* ─── Form ─── */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+/* Left column label */
+.formColLabel {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin: 0 0 24px;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+/* ─── Right sidebar ─── */
+.sidebar {
+  position: sticky;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
-.field {
+/* ─── Service direction panel ─── */
+.servicePanel {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #050505;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, .14);
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
-.label {
-  font-size: 11px;
+.servicePanelTop {
+  padding: 28px;
+}
+
+.servicePanelEyebrow {
+  font-size: 10px;
   font-weight: 900;
-  letter-spacing: .08em;
+  letter-spacing: .10em;
   text-transform: uppercase;
-  color: #3a3f45;
+  color: var(--blue2);
+  margin: 0 0 10px;
 }
 
-.req {
-  color: var(--blue);
-}
-
-/* Shared control styles */
-.input,
-.select,
-.textarea {
-  padding: 14px 18px;
-  border: 1.5px solid #e2e5e8;
-  border-radius: 12px;
-  background: #fafbfc;
-  font-size: 15px;
-  color: var(--black);
-  font-family: inherit;
-  line-height: 1.4;
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
-}
-
-.input:hover:not(:focus),
-.select:hover:not(:focus),
-.textarea:hover:not(:focus) {
-  border-color: #b8bfc8;
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus {
-  border-color: var(--blue);
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(0, 118, 191, .09);
-}
-
-/* Validation error state */
-.inputError {
-  border-color: #e53e3e !important;
-  box-shadow: 0 0 0 4px rgba(229, 62, 62, .08) !important;
-  background: #fff !important;
-}
-
-.errorMsg {
-  font-size: 12px;
-  color: #e53e3e;
-  font-weight: 600;
-  letter-spacing: .01em;
-}
-
-/* Textarea */
-.textarea {
-  resize: vertical;
-  min-height: 140px;
-}
-
-/* Select — custom chevron arrow */
-.selectWrap {
-  position: relative;
-}
-
-.selectWrap::after {
-  content: '▾';
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--blue);
-  font-size: 15px;
-  pointer-events: none;
+.servicePanelHeading {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 22px;
+  letter-spacing: -.01em;
+  color: #fff;
+  margin: 0 0 14px;
   line-height: 1;
 }
 
-.select {
-  appearance: none;
-  cursor: pointer;
-  padding-right: 44px;
-}
-
-/* Form footer row */
-.formFooter {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding-top: 4px;
-}
-
-/* Submit button — matches CTA pill across the site */
-.submitBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 48px;
-  height: 56px;
-  border-radius: 999px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  box-shadow: 0 12px 32px rgba(0, 118, 191, .32);
-  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
-}
-
-.submitBtn:hover {
-  background: var(--blue2);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0, 149, 223, .40);
-}
-
-.submitBtn:active {
-  transform: translateY(0);
-}
-
-.formNote {
-  font-size: 12px;
-  color: #aaa;
-  margin: 0;
-}
-
-/* ─── Success / submitted state ─── */
-.successCard {
-  background: #fff;
-  border: 1.5px solid #e8eaec;
-  border-radius: 20px;
-  padding: 52px 44px;
-  text-align: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, .06);
-}
-
-.successIcon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue), var(--blue2));
-  color: #fff;
-  font-size: 28px;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  box-shadow: 0 12px 28px rgba(0, 118, 191, .28);
-}
-
-.successHeading {
-  font-family: Impact, 'Arial Black', sans-serif;
-  text-transform: uppercase;
-  font-size: 32px;
-  letter-spacing: -.02em;
-  color: var(--black);
-  margin: 0 0 12px;
-}
-
-.successMsg {
-  font-size: 16px;
-  color: #5c6166;
-  line-height: 1.7;
-  max-width: 380px;
-  margin: 0 auto 28px;
-}
-
-/* Amber developer note */
-.pendingNote {
-  background: #fffbf0;
-  border: 1px solid #f0d870;
-  border-radius: 12px;
-  padding: 20px 24px;
-  text-align: left;
-  margin: 0 0 28px;
-}
-
-.pendingNote strong {
-  display: block;
-  font-size: 11px;
-  font-weight: 900;
-  color: #7a5a00;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  margin: 0 0 8px;
-}
-
-.pendingNote p {
+.servicePanelCopy {
   font-size: 13px;
-  color: #8a6e1e;
-  line-height: 1.72;
+  color: rgba(255, 255, 255, .62);
+  line-height: 1.75;
   margin: 0;
 }
 
-.resetBtn {
-  display: inline-flex;
+.servicePanelBtn {
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 32px;
+  margin: 0 28px 28px;
   height: 48px;
   border-radius: 999px;
   background: var(--blue);
   color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .04em;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .05em;
   text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background .2s ease;
+  box-shadow: 0 8px 20px rgba(0, 118, 191, .36);
+  transition: background .2s ease, transform .2s ease;
 }
 
-.resetBtn:hover {
+.servicePanelBtn:hover {
   background: var(--blue2);
+  transform: translateY(-2px);
 }
 
-/* ─── Info sidebar ─── */
+/* ─── Company info panel ─── */
 .info {
-  position: sticky;
-  top: 130px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 28px rgba(0, 0, 0, .09);
 }
 
-/* Blue header strip */
 .infoHead {
   background: var(--blue);
   padding: 24px 28px;
@@ -356,7 +190,6 @@
   line-height: 1;
 }
 
-/* Info body */
 .infoBody {
   background: #fff;
   padding: 24px 28px;
@@ -391,6 +224,7 @@
   font-size: 13px;
   color: #5c6166;
   line-height: 1.72;
+  margin: 0;
 }
 
 /* ─── Responsive ─── */
@@ -412,28 +246,31 @@
     gap: 48px;
   }
 
-  /* Sidebar goes below form on tablet/mobile */
-  .info {
+  .sidebar {
     position: static;
   }
 }
 
-@media (max-width: 680px) {
+/* Side-by-side sidebar panels at tablet width */
+@media (min-width: 540px) and (max-width: 1000px) {
+  .sidebar {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .servicePanel,
+  .info {
+    flex: 1;
+  }
+}
+
+@media (max-width: 539px) {
   .heroWrap {
     padding: 32px 16px 48px;
   }
 
   .formSection {
     padding: 48px 16px;
-  }
-
-  /* Stack all row pairs vertically */
-  .row {
-    grid-template-columns: 1fr;
-  }
-
-  .successCard {
-    padding: 36px 24px;
   }
 }
 
@@ -446,5 +283,13 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .servicePanelBtn {
+    transition: background .2s ease;
+  }
+
+  .servicePanelBtn:hover {
+    transform: none;
   }
 }
