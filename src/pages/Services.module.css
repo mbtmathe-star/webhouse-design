@@ -244,6 +244,28 @@
   }
 }
 
+@media (max-width: 430px) {
+  .hero {
+    padding: 220px 16px 48px;
+  }
+
+  .heroHeading {
+    font-size: clamp(52px, 15vw, 80px);
+  }
+
+  .heroCopy {
+    font-size: 14.5px;
+  }
+
+  .gridSection {
+    padding: 44px 16px 64px;
+  }
+
+  .ctaHeading {
+    font-size: clamp(40px, 12vw, 64px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero {
     animation: none;

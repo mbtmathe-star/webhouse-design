@@ -112,8 +112,10 @@
     justify-content: center;
   }
 
+  /* Logo first so it appears at the top when stacked */
   .logoLink {
     margin: 0 auto;
+    order: -1;
   }
 
   .navRight {
@@ -131,5 +133,34 @@
     gap: 18px;
     font-size: 12px;
     flex-wrap: wrap;
+  }
+}
+
+/* ─── Small mobile ─── */
+@media (max-width: 430px) {
+  .nav {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .logo {
+    width: 140px;
+    height: 44px;
+  }
+
+  .navLinks {
+    gap: 14px;
+    font-size: 11.5px;
+  }
+
+  /* Hide "Since [year]" text to save space */
+  .navRight span {
+    display: none;
+  }
+
+  .btn {
+    padding: 0 20px;
+    min-height: 42px;
+    font-size: 12px;
   }
 }

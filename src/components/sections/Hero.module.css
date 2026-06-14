@@ -129,6 +129,7 @@
   height: 110px;
   margin: 32px auto 0;
   isolation: isolate;
+  overflow: hidden;
 }
 
 .blobOrbit::before {
@@ -237,13 +238,25 @@
 }
 
 @media (max-width: 680px) {
-  .hero { min-height: 800px; }
+  .hero { min-height: 760px; }
   .heroContent { margin-top: 210px; }
   .heroContent h1 {
     font-size: clamp(36px, 12vw, 56px);
     letter-spacing: -.035em;
   }
   .subline { font-size: 14px; }
+}
+
+@media (max-width: 430px) {
+  .hero { min-height: 720px; }
+  .heroContent { margin-top: 200px; }
+  .subline {
+    font-size: 13.5px;
+    width: min(500px, 96%);
+  }
+  .blobOrbit {
+    margin-top: 24px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

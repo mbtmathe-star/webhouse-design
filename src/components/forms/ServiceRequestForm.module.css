@@ -415,6 +415,53 @@
   }
 }
 
+@media (max-width: 430px) {
+  .stepHeader {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .stepNum {
+    font-size: 24px;
+    min-width: 34px;
+  }
+
+  .stepBody {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .submitRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .submitNote {
+    text-align: center;
+  }
+
+  .fileZone {
+    padding: 28px 16px;
+  }
+
+  .successCard {
+    padding: 28px 16px;
+  }
+
+  .successHeading {
+    font-size: 26px;
+  }
+
+  .successMsg {
+    font-size: 14px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .submitBtn,
   .resetBtn {
