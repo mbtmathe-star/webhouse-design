@@ -111,11 +111,15 @@
   font-size: clamp(44px, 6.8vw, 98px);
   line-height: .92;
   letter-spacing: -.04em;
-  color: #fff;
 }
 
-/* "Solutions" — white on the blue background */
-.blue {
+/* "Creative Digital And Technology" — black on blue */
+.dark {
+  color: var(--black);
+}
+
+/* "Solutions" — white on blue */
+.white {
   color: #fff;
 }
 
@@ -142,9 +146,33 @@
   }
 }
 
+/* ─── Mobile image row ─── */
+.mobileImageRow {
+  display: none;
+}
+
 @media (max-width: 760px) {
   .floatImg {
     display: none;
+  }
+
+  .mobileImageRow {
+    display: flex;
+    gap: 12px;
+    margin: 28px 0 0;
+    justify-content: center;
+  }
+
+  .mobileImg {
+    width: calc(50% - 6px);
+    max-width: 190px;
+    height: 124px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 3px solid #fff;
+    box-shadow:
+      0 0 0 2px rgba(255, 255, 255, .40),
+      0 12px 32px rgba(0, 0, 0, .26);
   }
 }
 
@@ -174,8 +202,13 @@
 
   .copy {
     font-size: 14.5px;
-    margin-top: 28px;
+    margin-top: 24px;
     line-height: 1.78;
+  }
+
+  .mobileImg {
+    max-width: 160px;
+    height: 106px;
   }
 }
 

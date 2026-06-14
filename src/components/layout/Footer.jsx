@@ -18,16 +18,18 @@ export default function Footer() {
             </div>
           </Link>
           <p className={styles.brandDesc}>
-            A full-service creative digital and technology agency helping businesses
-            build professional brands, strong online platforms and reliable digital
-            systems.
+            {company.name} is a creative digital and technology agency helping
+            businesses build stronger brands, professional websites, reliable digital
+            systems and practical technology solutions.
           </p>
+          <p className={styles.tagline}>{company.tagline}</p>
         </div>
 
         {/* Column 2 — sitemap */}
         <div className={styles.sitemapCol}>
           <h4>Sitemap</h4>
           <nav aria-label="Footer navigation">
+            <Link to="/">Home</Link>
             <Link to="/about">About</Link>
             <Link to="/services">Services</Link>
             <Link to="/portfolio">Portfolio</Link>
@@ -38,14 +40,19 @@ export default function Footer() {
         {/* Column 3 — locations + CTA */}
         <div className={styles.locationsCol}>
           <h4>Locations</h4>
-          {company.locations.map((loc) => (
-            <p key={loc}>{loc}</p>
-          ))}
-          <p>Serving South Africa and Namibia</p>
-          <br />
-          <Link to="/contact" className={styles.footerEmail}>
-            Request a Quote
-          </Link>
+          <p className={styles.locationsText}>
+            Based in Gauteng with presence in Hartbeespoort and Lanseria.
+            Serving clients across South Africa and Namibia.
+          </p>
+          <div className={styles.footerCta}>
+            <p className={styles.footerCtaLabel}>Have a project in mind?</p>
+            <p className={styles.footerCtaText}>
+              Tell us what you need and we&apos;ll guide you toward the right solution.
+            </p>
+            <Link to="/contact" className={styles.footerCtaBtn}>
+              Start a Project
+            </Link>
+          </div>
         </div>
 
       </div>

@@ -1,0 +1,64 @@
+/* ─────────────────────────────────────────
+   Mobile Sticky CTA Bar — hidden on desktop
+───────────────────────────────────────── */
+
+.bar {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 88;
+    gap: 10px;
+    padding: 12px 16px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .96);
+    border-top: 1px solid rgba(0, 0, 0, .08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .primary,
+  .secondary {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  .primary {
+    background: #050505;
+    color: #fff;
+    transition: background .2s ease;
+  }
+
+  .primary:hover {
+    background: var(--blue);
+  }
+
+  .secondary {
+    background: transparent;
+    color: #050505;
+    border: 1.5px solid #d4d9de;
+    transition: border-color .2s ease, color .2s ease;
+  }
+
+  .secondary:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+}

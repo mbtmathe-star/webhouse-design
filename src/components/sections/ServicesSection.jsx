@@ -17,9 +17,10 @@ export default function ServicesSection() {
         <div className={styles.splitTitle}>
           <h2>What We<br />Offer</h2>
           <p>
-            We provide creative, digital and technology solutions designed to help
-            businesses grow. Pricing is not displayed publicly because every quotation
-            is tailored to the client&apos;s requirements, timeline and project scope.
+            From brand identity and websites to software, printing, marketing and IT
+            support, The Web House provides practical creative and technology solutions
+            for businesses that want to improve how they look, work and connect with
+            customers.
           </p>
           <h2 className={styles.right}>For<br />Business</h2>
         </div>

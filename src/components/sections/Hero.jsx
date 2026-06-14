@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Hero.module.css'
 
 export default function Hero() {
@@ -18,6 +19,10 @@ export default function Hero() {
           helping businesses build stronger brands, professional websites and reliable
           digital systems.
         </p>
+        <div className={styles.heroCtas}>
+          <Link to="/contact" className={styles.heroCtaPrimary}>Start a Project</Link>
+          <Link to="/services" className={styles.heroCtaSecondary}>View Services</Link>
+        </div>
         <div className={styles.blobOrbit} aria-hidden="true">
           <span className={`${styles.blob} ${styles.b1}`} />
           <span className={`${styles.blob} ${styles.b2}`} />

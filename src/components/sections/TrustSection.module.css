@@ -1,0 +1,138 @@
+/* ─────────────────────────────────────────
+   Trust / Proof Section
+───────────────────────────────────────── */
+
+.section {
+  background:
+    radial-gradient(ellipse at 20% 100%, rgba(0, 149, 223, .30), transparent 56%),
+    var(--blue);
+  padding: 88px 40px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.inner {
+  width: min(1060px, 100%);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.heading {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(34px, 5.2vw, 72px);
+  line-height: .9;
+  letter-spacing: -.04em;
+  color: #fff;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, .10);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity .52s ease calc(var(--i, 0) * 80ms),
+    transform .52s ease calc(var(--i, 0) * 80ms),
+    background .22s ease,
+    border-color .22s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, .16);
+  border-color: rgba(255, 255, 255, .36);
+}
+
+.card.cardVisible {
+  opacity: 1;
+  transform: none;
+}
+
+.cardValue {
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: clamp(26px, 3.2vw, 42px);
+  letter-spacing: -.02em;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.cardLabel {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .55);
+  margin-bottom: 12px;
+}
+
+.cardNote {
+  font-size: 13px;
+  color: rgba(255, 255, 255, .70);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1000px) {
+  .section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 680px) {
+  .section {
+    padding: 64px 16px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 430px) {
+  .card {
+    padding: 20px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: background .22s ease, border-color .22s ease;
+  }
+}

@@ -49,15 +49,16 @@ function SuccessCard({ onReset }) {
       <div className={styles.successIcon} aria-hidden="true">✓</div>
       <h3 className={styles.successHeading}>Enquiry Received</h3>
       <p className={styles.successMsg}>
-        Thank you for reaching out. Our team will review your enquiry
-        and contact you shortly.
+        Thank you for reaching out. Your enquiry has been captured in this
+        frontend demo. The next production phase can connect email, WhatsApp,
+        file storage or CRM handling.
       </p>
       <div className={styles.pendingNote}>
-        <strong>Backend connection required</strong>
+        <strong>Frontend demo only</strong>
         <p>
-          This form is currently frontend-only. Email delivery, CRM entry and
-          WhatsApp notification still need to be connected before enquiries
-          are received by the team.
+          This is a frontend-only request flow. The next production phase can
+          connect request saving, email notifications, WhatsApp alerts, file
+          storage and admin request management.
         </p>
       </div>
       <button className={styles.resetBtn} onClick={onReset}>

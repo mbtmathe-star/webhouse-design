@@ -9,18 +9,17 @@ function ServicePanel() {
   return (
     <div className={styles.servicePanel}>
       <div className={styles.servicePanelTop}>
-        <p className={styles.servicePanelEyebrow}>Know what you need?</p>
+        <p className={styles.servicePanelEyebrow}>Already know what you need?</p>
         <h3 className={styles.servicePanelHeading}>
           Browse Our Services
         </h3>
         <p className={styles.servicePanelCopy}>
-          Each service page has a dedicated request form with the right questions
-          for that specific project. If you know which service you need, head
-          straight there for a faster, more tailored submission.
+          Explore our services and use the service-specific request form so we can
+          collect the right requirements for your project.
         </p>
       </div>
       <Link to="/services" className={styles.servicePanelBtn}>
-        View All Services →
+        View Services →
       </Link>
     </div>
   )

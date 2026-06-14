@@ -2,7 +2,7 @@ export const company = {
   name: 'The Web House',
   tagline: 'Where Creativity Meets Technology',
   description:
-    'A creative digital and technology agency helping businesses build professional brands, strong online platforms and reliable digital systems.',
+    'The Web House is a creative digital and technology agency helping businesses build stronger brands, professional websites, reliable digital systems and practical technology solutions.',
   founded: 2016,
 
   markets: ['South Africa', 'Namibia'],

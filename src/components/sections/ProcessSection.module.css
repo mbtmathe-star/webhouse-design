@@ -1,0 +1,156 @@
+/* ─────────────────────────────────────────
+   How We Work / Process Section
+───────────────────────────────────────── */
+
+.section {
+  background: var(--soft);
+  padding: 88px 40px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.inner {
+  width: min(1060px, 100%);
+  margin: 0 auto;
+}
+
+/* ─── Header ─── */
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+
+.heading {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: .92;
+  letter-spacing: -.04em;
+  color: var(--black);
+  margin: 0 0 18px;
+}
+
+.intro {
+  max-width: 560px;
+  margin: 0 auto;
+  color: #5c6166;
+  font-size: 16px;
+  line-height: 1.82;
+}
+
+/* ─── Steps list ─── */
+.steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 28px 0;
+  border-bottom: 1px solid #e2e5e8;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition:
+    opacity .52s ease calc(var(--i, 0) * 90ms),
+    transform .52s ease calc(var(--i, 0) * 90ms);
+}
+
+.step:first-child {
+  border-top: 1px solid #e2e5e8;
+}
+
+.step.stepVisible {
+  opacity: 1;
+  transform: none;
+}
+
+.stepNum {
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: 36px;
+  letter-spacing: -.02em;
+  color: var(--blue);
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.stepTitle {
+  font-family: Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: -.01em;
+  color: var(--black);
+  margin: 0 0 8px;
+  line-height: 1;
+}
+
+.stepDesc {
+  font-size: 15px;
+  color: #5c6166;
+  line-height: 1.78;
+  margin: 0;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1000px) {
+  .section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 680px) {
+  .section {
+    padding: 64px 16px;
+  }
+
+  .header {
+    margin-bottom: 44px;
+  }
+
+  .step {
+    grid-template-columns: 52px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+  }
+
+  .stepNum {
+    font-size: 28px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .step {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

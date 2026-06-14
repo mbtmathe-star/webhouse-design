@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────
-   Navbar — matches approved HTML nav
+   Navbar
 ───────────────────────────────────────── */
 
 .header {
@@ -28,7 +28,7 @@
   box-shadow: 0 16px 38px rgba(0, 0, 0, .12);
 }
 
-/* ─── Left nav links ─── */
+/* ─── Desktop left links ─── */
 .navLinks {
   display: flex;
   align-items: center;
@@ -61,11 +61,10 @@
   width: 165px;
   height: 52px;
   object-fit: contain;
-  border-radius: 8px;
   display: block;
 }
 
-/* ─── Right nav ─── */
+/* ─── Desktop right ─── */
 .navRight {
   display: flex;
   align-items: center;
@@ -75,7 +74,7 @@
   font-weight: 700;
 }
 
-.navRight span {
+.since {
   opacity: .65;
 }
 
@@ -92,6 +91,7 @@
   font-size: 13px;
   font-weight: 900;
   white-space: nowrap;
+  text-decoration: none;
   transition: background .2s ease;
 }
 
@@ -99,68 +99,180 @@
   background: var(--blue);
 }
 
-/* ─── Tablet ─── */
+/* ─── Burger button — hidden on desktop ─── */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background .2s ease;
+  flex-shrink: 0;
+}
+
+.burger:hover {
+  background: rgba(0, 0, 0, .05);
+}
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #050505;
+  border-radius: 2px;
+  transition: transform .22s ease, opacity .22s ease, width .22s ease;
+  transform-origin: center;
+}
+
+/* Burger X state */
+.burgerOpen .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burgerOpen .bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.burgerOpen .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─── Mobile dropdown menu ─── */
+.mobileMenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  background: rgba(255, 255, 255, .98);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, .07);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .15);
+  padding: 10px;
+  z-index: 90;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .22s ease, transform .22s ease;
+  pointer-events: none;
+}
+
+.mobileLink {
+  display: block;
+  padding: 13px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #050505;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background .15s ease, color .15s ease;
+}
+
+.mobileLink:hover {
+  background: #f4f6f8;
+  color: var(--blue);
+}
+
+.mobileLinkActive {
+  background: #f0f5f9;
+  color: var(--blue);
+}
+
+.mobileCtaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 6px 6px;
+  height: 50px;
+  border-radius: 12px;
+  background: #050505;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .2s ease;
+}
+
+.mobileCtaBtn:hover {
+  background: var(--blue);
+}
+
+/* ─── Mobile breakpoint ─── */
 @media (max-width: 1000px) {
   .nav {
-    grid-template-columns: 1fr;
-    padding: 14px;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .navLinks {
-    justify-content: center;
-  }
-
-  /* Logo first so it appears at the top when stacked */
-  .logoLink {
-    margin: 0 auto;
-    order: -1;
-  }
-
-  .navRight {
-    justify-content: center;
-  }
-}
-
-/* ─── Mobile ─── */
-@media (max-width: 680px) {
-  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px;
+    min-height: 60px;
     width: calc(100% - 20px);
+    gap: 0;
   }
 
-  .navLinks {
-    gap: 18px;
-    font-size: 12px;
-    flex-wrap: wrap;
-  }
-}
-
-/* ─── Small mobile ─── */
-@media (max-width: 430px) {
-  .nav {
-    gap: 10px;
-    padding: 12px;
-  }
-
-  .logo {
-    width: 140px;
-    height: 44px;
-  }
-
-  .navLinks {
-    gap: 14px;
-    font-size: 11.5px;
-  }
-
-  /* Hide "Since [year]" text to save space */
-  .navRight span {
+  /* Hide desktop elements */
+  .navLinks,
+  .navRight {
     display: none;
   }
 
-  .btn {
-    padding: 0 20px;
-    min-height: 42px;
-    font-size: 12px;
+  /* Logo stays left */
+  .logoLink {
+    justify-content: flex-start;
+    padding: 8px 0;
+  }
+
+  .logo {
+    width: 150px;
+    height: 46px;
+  }
+
+  /* Show burger */
+  .burger {
+    display: flex;
+  }
+
+  /* Show mobile menu container */
+  .mobileMenu {
+    display: flex;
+  }
+
+  /* Open state */
+  .mobileOpen {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .nav {
+    width: calc(100% - 16px);
+    padding: 0 12px;
+    min-height: 56px;
+  }
+
+  .logo {
+    width: 130px;
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+  }
+
+  .mobileMenu {
+    transition: none;
   }
 }

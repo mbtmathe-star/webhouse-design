@@ -3,7 +3,7 @@ import { useReveal } from '../../hooks/useReveal'
 import styles from './WorkSection.module.css'
 
 const MARQUEE_TEXT =
-  'Request Quote ✦ Website Development ✦ Graphic Design ✦ Printing ✦ Marketing ✦ Software Development ✦ IT Support ✦ Motion Graphics ✦ IT Consulting ✦ '
+  'Start a Project ✦ Website Development ✦ Graphic Design ✦ Printing ✦ Marketing ✦ Software Development ✦ IT Support ✦ Motion Graphics ✦ IT Consulting ✦ '
 
 export default function WorkSection() {
   const [ref, visible] = useReveal(0.08)
@@ -31,12 +31,12 @@ export default function WorkSection() {
         />
 
         <p>
-          Start your request and The Web House team will review your requirements before
-          preparing a customised quotation.
+          Have a project in mind? Tell us what you need and we&apos;ll guide you
+          toward the right creative, digital or technology solution.
         </p>
 
-        <Link to="/contact" className={styles.down} aria-label="Request a quote">
-          ↓
+        <Link to="/contact" className={styles.ctaBtn}>
+          Start a Project
         </Link>
       </div>
     </section>

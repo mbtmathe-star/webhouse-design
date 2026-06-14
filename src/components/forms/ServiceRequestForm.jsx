@@ -96,11 +96,11 @@ function SuccessCard({ onReset }) {
         WhatsApp or email shortly.
       </p>
       <div className={styles.pendingNote}>
-        <strong>Backend connection required</strong>
+        <strong>Frontend demo only</strong>
         <p>
-          This form is currently frontend-only. To activate submission delivery,
-          request saving, file storage, email notifications, WhatsApp alerts, and
-          admin management must be connected.
+          This is a frontend-only request flow. The next production phase can connect
+          request saving, email notifications, WhatsApp alerts, file storage and admin
+          request management.
         </p>
       </div>
       <button className={styles.resetBtn} onClick={onReset}>
@@ -179,7 +179,7 @@ export default function ServiceRequestForm({ service }) {
         <StepHeader
           num="01"
           title="Your Details"
-          sub="Tell us who you are and how to reach you."
+          sub="Required fields help us understand who to contact and what kind of project you need."
         />
         <div className={styles.stepBody}>
 
@@ -268,7 +268,7 @@ export default function ServiceRequestForm({ service }) {
         <StepHeader
           num="03"
           title="Supporting Files"
-          sub="Upload logos, brand guides, briefs, designs, or any reference files."
+          sub="You can attach logos, brand guidelines, company profiles, images, briefs, website content, existing designs or other supporting project files."
         />
         <div className={styles.stepBody}>
           <div
@@ -310,7 +310,7 @@ export default function ServiceRequestForm({ service }) {
           )}
 
           <p className={styles.fileNote}>
-            Files are selected locally only — backend storage must be connected to save uploads.
+            File upload storage is not connected in this frontend version.
           </p>
         </div>
       </div>
