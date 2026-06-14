@@ -1,12 +1,12 @@
 /* ─────────────────────────────────────────
-   How We Work / Process Section
+   Process Section — Horizontal Stepper
 ───────────────────────────────────────── */
 
 .section {
-  background: var(--soft);
-  padding: 88px 40px;
+  background: #fff;
+  padding: 72px 40px 80px;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(32px);
   transition: opacity .75s ease, transform .75s ease;
 }
 
@@ -23,7 +23,7 @@
 /* ─── Header ─── */
 .header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 56px;
 }
 
 .eyebrow {
@@ -33,49 +33,72 @@
   letter-spacing: .10em;
   text-transform: uppercase;
   color: var(--blue);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .heading {
   font-family: Impact, 'Arial Black', sans-serif;
   text-transform: uppercase;
-  font-size: clamp(40px, 6vw, 80px);
+  font-size: clamp(36px, 5vw, 68px);
   line-height: .92;
   letter-spacing: -.04em;
   color: var(--black);
-  margin: 0 0 18px;
+  margin: 0 0 14px;
 }
 
 .intro {
-  max-width: 560px;
+  max-width: 420px;
   margin: 0 auto;
-  color: #5c6166;
-  font-size: 16px;
-  line-height: 1.82;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.75;
 }
 
-/* ─── Steps list ─── */
-.steps {
+/* ─────────────────────────────────────────
+   DESKTOP — horizontal stepper
+───────────────────────────────────────── */
+
+.stepper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* Connector line — runs between the centres of the first and last marker */
+/* Each step is 1/5 = 20% wide; first marker centre = 10%, last = 90% */
+.stepper::before {
+  content: '';
+  position: absolute;
+  top: 22px; /* = half of 44px marker */
+  left: 10%;
+  right: 10%;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    var(--blue)  0%,
+    rgba(0, 118, 191, .20)  30%,
+    rgba(0, 118, 191, .20)  70%,
+    var(--blue) 100%
+  );
+  z-index: 0;
+}
+
+/* ─── Individual step ─── */
+.step {
+  flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.step {
-  display: grid;
-  grid-template-columns: 76px 1fr;
-  gap: 28px;
-  align-items: flex-start;
-  padding: 28px 0;
-  border-bottom: 1px solid #e2e5e8;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 6px;
   opacity: 0;
-  transform: translateX(-20px);
+  transform: translateY(22px);
   transition:
-    opacity .52s ease calc(var(--i, 0) * 90ms),
-    transform .52s ease calc(var(--i, 0) * 90ms);
-}
-
-.step:first-child {
-  border-top: 1px solid #e2e5e8;
+    opacity .50s ease calc(var(--i, 0) * 80ms),
+    transform .50s ease calc(var(--i, 0) * 80ms);
 }
 
 .step.stepVisible {
@@ -83,64 +106,209 @@
   transform: none;
 }
 
-.stepNum {
+/* ─── Marker circle ─── */
+.markerWrap {
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.marker {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* soft glow ring */
+  box-shadow:
+    0 0 0 5px rgba(0, 118, 191, .10),
+    0 6px 18px rgba(0, 118, 191, .34);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.step:hover .marker {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 6px rgba(0, 118, 191, .15),
+    0 10px 28px rgba(0, 118, 191, .44);
+}
+
+.markerNum {
   font-family: Impact, 'Arial Black', sans-serif;
-  font-size: 36px;
-  letter-spacing: -.02em;
-  color: var(--blue);
+  font-size: 18px;
+  letter-spacing: -.01em;
+  color: #fff;
   line-height: 1;
-  padding-top: 2px;
+  user-select: none;
+}
+
+/* ─── Step text ─── */
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 2px;
 }
 
 .stepTitle {
-  font-family: Impact, 'Arial Black', sans-serif;
-  text-transform: uppercase;
-  font-size: 20px;
-  letter-spacing: -.01em;
+  font-size: 13.5px;
+  font-weight: 800;
   color: var(--black);
-  margin: 0 0 8px;
-  line-height: 1;
+  margin: 0;
+  letter-spacing: .01em;
+  line-height: 1.25;
 }
 
 .stepDesc {
-  font-size: 15px;
-  color: #5c6166;
-  line-height: 1.78;
+  font-size: 12.5px;
+  color: #6b7280;
+  line-height: 1.65;
   margin: 0;
 }
 
-/* ─── Responsive ─── */
-@media (max-width: 1000px) {
+/* ─────────────────────────────────────────
+   TABLET ≤900px — stepper stays horizontal
+   but text size adjusts
+───────────────────────────────────────── */
+@media (max-width: 900px) {
   .section {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-
-@media (max-width: 680px) {
-  .section {
-    padding: 64px 16px;
-  }
-
-  .header {
-    margin-bottom: 44px;
+    padding: 64px 24px 72px;
   }
 
   .step {
-    grid-template-columns: 52px 1fr;
-    gap: 18px;
-    padding: 22px 0;
-  }
-
-  .stepNum {
-    font-size: 28px;
+    padding: 0 4px;
   }
 
   .stepTitle {
-    font-size: 18px;
+    font-size: 12.5px;
+  }
+
+  .stepDesc {
+    font-size: 12px;
   }
 }
 
+/* ─────────────────────────────────────────
+   MOBILE ≤680px — switch to vertical stepper
+───────────────────────────────────────── */
+@media (max-width: 680px) {
+  .section {
+    padding: 56px 20px 64px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  /* Stack vertically */
+  .stepper {
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  /* Hide the horizontal connector */
+  .stepper::before {
+    display: none;
+  }
+
+  /* Each step: row layout — marker left, content right */
+  .step {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 18px;
+    padding: 0 0 28px;
+    flex: none;
+    width: 100%;
+    transform: translateX(-20px);
+  }
+
+  .step.stepVisible {
+    transform: none;
+  }
+
+  .step:last-child {
+    padding-bottom: 0;
+  }
+
+  .markerWrap {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  /* Vertical connector — from bottom of this marker down to next marker */
+  .step:not(:last-child) .markerWrap::after {
+    content: '';
+    position: absolute;
+    top: 44px; /* bottom of 44px circle */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.5px;
+    height: 28px; /* = padding-bottom of .step */
+    background: linear-gradient(
+      180deg,
+      rgba(0, 118, 191, .30) 0%,
+      rgba(0, 118, 191, .08) 100%
+    );
+  }
+
+  .stepContent {
+    padding-top: 10px;
+  }
+
+  .stepTitle {
+    font-size: 14.5px;
+    font-weight: 800;
+  }
+
+  .stepDesc {
+    font-size: 13.5px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   MOBILE ≤430px
+───────────────────────────────────────── */
+@media (max-width: 430px) {
+  .section {
+    padding: 52px 16px 60px;
+  }
+
+  .header {
+    margin-bottom: 36px;
+  }
+
+  .step {
+    gap: 16px;
+    padding-bottom: 26px;
+  }
+
+  .step:not(:last-child) .markerWrap::after {
+    height: 26px;
+  }
+
+  .marker {
+    width: 40px;
+    height: 40px;
+  }
+
+  .markerNum {
+    font-size: 16px;
+  }
+
+  /* Re-calculate connector top for 40px marker */
+  .step:not(:last-child) .markerWrap::after {
+    top: 40px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   Reduced motion
+───────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .section {
     opacity: 1;
@@ -152,5 +320,16 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .marker {
+    transition: none;
+  }
+
+  .step:hover .marker {
+    transform: none;
+    box-shadow:
+      0 0 0 5px rgba(0, 118, 191, .10),
+      0 6px 18px rgba(0, 118, 191, .34);
   }
 }

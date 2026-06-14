@@ -3,29 +3,29 @@ import styles from './ProcessSection.module.css'
 
 const STEPS = [
   {
-    num: '01',
+    num: 1,
     title: 'Discover',
-    desc: 'We understand your business, goals, challenges and project requirements.',
+    desc: 'We learn about your business, goals and project requirements.',
   },
   {
-    num: '02',
+    num: 2,
     title: 'Strategy',
-    desc: 'We define the best creative, digital or technology direction for the project.',
+    desc: 'We define the best creative, digital or technology direction.',
   },
   {
-    num: '03',
+    num: 3,
     title: 'Design & Build',
     desc: 'We create the visuals, platform, system or support solution required.',
   },
   {
-    num: '04',
+    num: 4,
     title: 'Review & Refine',
-    desc: 'We test, review and improve the work before final delivery.',
+    desc: 'We test, review and improve everything before final delivery.',
   },
   {
-    num: '05',
+    num: 5,
     title: 'Deliver & Support',
-    desc: 'We hand over the completed work and provide support where required.',
+    desc: 'We deliver the work and provide support where needed.',
   },
 ]
 
@@ -36,29 +36,36 @@ export default function ProcessSection() {
     <section
       ref={ref}
       className={`${styles.section} ${visible ? styles.visible : ''}`}
-      id="how-we-work"
+      id="process"
     >
       <div className={styles.inner}>
 
+        {/* Header */}
         <div className={styles.header}>
-          <span className={styles.eyebrow}>Our Process</span>
-          <h2 className={styles.heading}>How We Work</h2>
+          <span className={styles.eyebrow}>How We Work</span>
+          <h2 className={styles.heading}>Our Process</h2>
           <p className={styles.intro}>
-            Every project starts with understanding your business, your goals and
-            the solution you need. From there, The Web House guides the process
-            from idea to delivery.
+            A clear, guided approach from first conversation to final delivery.
           </p>
         </div>
 
-        <div className={styles.steps}>
+        {/* Horizontal stepper */}
+        <div className={styles.stepper}>
           {STEPS.map((step, i) => (
             <div
               key={step.num}
               className={`${styles.step} ${visible ? styles.stepVisible : ''}`}
               style={{ '--i': i }}
             >
-              <div className={styles.stepNum}>{step.num}</div>
-              <div className={styles.stepBody}>
+              {/* Circle marker */}
+              <div className={styles.markerWrap}>
+                <div className={styles.marker}>
+                  <span className={styles.markerNum}>{step.num}</span>
+                </div>
+              </div>
+
+              {/* Step text */}
+              <div className={styles.stepContent}>
                 <h3 className={styles.stepTitle}>{step.title}</h3>
                 <p className={styles.stepDesc}>{step.desc}</p>
               </div>
