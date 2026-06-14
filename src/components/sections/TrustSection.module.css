@@ -6,7 +6,7 @@
   background:
     radial-gradient(ellipse at 80% 0%, rgba(0, 149, 223, .45), transparent 55%),
     var(--blue);
-  padding: 68px 40px;
+  padding: 52px 40px;
   opacity: 0;
   transform: translateY(40px);
   transition: opacity .75s ease, transform .75s ease;
@@ -25,7 +25,7 @@
 /* ─── Header ─── */
 .header {
   text-align: center;
-  margin-bottom: 44px;
+  margin-bottom: 32px;
 }
 
 .heading {
@@ -102,8 +102,8 @@
 }
 
 .point {
-  background: rgba(255, 255, 255, .12);
-  border: 1px solid rgba(255, 255, 255, .18);
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, .50);
   border-radius: 16px;
   padding: 18px 22px;
   opacity: 0;
@@ -112,7 +112,7 @@
     opacity .52s ease calc(var(--i, 0) * 90ms),
     transform .52s ease calc(var(--i, 0) * 90ms),
     background .22s ease,
-    border-color .22s ease;
+    box-shadow .22s ease;
 }
 
 .point.pointVisible {
@@ -121,14 +121,14 @@
 }
 
 .point:hover {
-  background: rgba(255, 255, 255, .18);
-  border-color: rgba(255, 255, 255, .28);
+  background: #f8fbff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .10);
 }
 
 .pointTitle {
   font-size: 14px;
   font-weight: 800;
-  color: #fff;
+  color: #0a0a0a;
   margin: 0 0 5px;
   letter-spacing: .01em;
   line-height: 1.3;
@@ -136,7 +136,7 @@
 
 .pointCopy {
   font-size: 13px;
-  color: rgba(255, 255, 255, .74);
+  color: #4b5563;
   line-height: 1.68;
   margin: 0;
 }
@@ -144,7 +144,7 @@
 /* ─── Responsive ─── */
 @media (max-width: 860px) {
   .section {
-    padding: 56px 24px;
+    padding: 44px 24px;
   }
 
   .body {
@@ -164,7 +164,7 @@
 
 @media (max-width: 680px) {
   .section {
-    padding: 52px 20px;
+    padding: 40px 20px;
   }
 
   .imageCol {
@@ -180,7 +180,7 @@
 
 @media (max-width: 430px) {
   .section {
-    padding: 48px 16px;
+    padding: 36px 16px;
   }
 
   .header {
