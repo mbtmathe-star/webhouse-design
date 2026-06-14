@@ -4,8 +4,7 @@
 
 .section {
   background: #050505;
-  padding: 80px 40px;
-  text-align: center;
+  padding: 88px 40px;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity .75s ease, transform .75s ease;
@@ -16,9 +15,21 @@
   transform: none;
 }
 
+/* ─── Two-column inner grid ─── */
 .inner {
-  width: min(640px, 100%);
+  width: min(1060px, 100%);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* ─── Text column ─── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .eyebrow {
@@ -27,17 +38,17 @@
   letter-spacing: .10em;
   text-transform: uppercase;
   color: var(--blue2);
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
 .heading {
   font-family: Impact, 'Arial Black', sans-serif;
   text-transform: uppercase;
-  font-size: clamp(36px, 6vw, 80px);
+  font-size: clamp(40px, 5.5vw, 80px);
   line-height: .9;
   letter-spacing: -.04em;
   color: #fff;
-  margin: 0 0 20px;
+  margin: 0 0 22px;
 }
 
 .copy {
@@ -45,12 +56,12 @@
   font-size: 16px;
   line-height: 1.80;
   margin: 0 0 36px;
+  max-width: 420px;
 }
 
 .btns {
   display: flex;
   gap: 14px;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -103,10 +114,71 @@
   border-color: rgba(255, 255, 255, .60);
 }
 
+/* ─── Image column ─── */
+.imageCol {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, .48),
+    0 0 0 1px rgba(255, 255, 255, .06);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Subtle dark gradient over the bottom edge of image */
+.imgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(0, 118, 191, .12) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, .28) 100%
+  );
+  pointer-events: none;
+}
+
 /* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .textCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .copy {
+    max-width: 100%;
+  }
+
+  .btns {
+    justify-content: center;
+  }
+
+  .imageCol {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 680px) {
   .section {
     padding: 64px 20px;
+  }
+
+  .inner {
+    gap: 32px;
   }
 }
 
@@ -115,10 +187,15 @@
     padding: 56px 16px;
   }
 
+  .imageCol {
+    aspect-ratio: 3 / 2;
+  }
+
   .btns {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    width: 100%;
   }
 
   .btnPrimary,
