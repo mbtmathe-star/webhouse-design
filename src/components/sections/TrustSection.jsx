@@ -35,7 +35,7 @@ export default function TrustSection() {
         {/* ─── Header ─── */}
         <div className={styles.header}>
           <h2 className={styles.heading}>
-            Built on Experience,<br />Creativity and Technology
+            Built on Experience,<br />Creativity and <span className={styles.headingWhite}>Technology</span>
           </h2>
           <p className={styles.sub}>
             From humble beginnings in a garage to serving businesses across South Africa
