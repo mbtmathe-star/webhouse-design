@@ -12,20 +12,7 @@ export default function AboutSection() {
     >
       <div className={styles.inner}>
 
-        {/* Desktop floating images — hidden on mobile via CSS */}
-        <img
-          className={`${styles.floatImg} ${styles.left}`}
-          src="/images/about/about-left.jpg"
-          alt=""
-          aria-hidden="true"
-        />
-        <img
-          className={`${styles.floatImg} ${styles.right}`}
-          src="/images/about/about-right.jpg"
-          alt=""
-          aria-hidden="true"
-        />
-
+        {/* Zone 1 — Badge + Heading */}
         <div className={styles.headline}>
           <span className={styles.badge}>Our Story</span>
           <h2>
@@ -35,20 +22,7 @@ export default function AboutSection() {
           </h2>
         </div>
 
-        {/* Mobile-only image row — shown below heading on small screens */}
-        <div className={styles.mobileImageRow} aria-hidden="true">
-          <img
-            src="/images/about/about-left.jpg"
-            alt=""
-            className={styles.mobileImg}
-          />
-          <img
-            src="/images/about/about-right.jpg"
-            alt=""
-            className={styles.mobileImg}
-          />
-        </div>
-
+        {/* Zone 2 — Paragraph */}
         <p className={styles.copy}>
           Founded in 2016 from humble beginnings in a garage, The Web House has grown
           into a creative digital and technology agency serving businesses across South
@@ -56,6 +30,20 @@ export default function AboutSection() {
           we combine creativity, technology and strategy to help businesses look
           professional, work smarter and grow with confidence.
         </p>
+
+        {/* Zone 3 — Decorative image pair (below text on all screen sizes) */}
+        <div className={styles.imageRow} aria-hidden="true">
+          <img
+            src="/images/about/about-left.jpg"
+            alt=""
+            className={`${styles.imgCard} ${styles.imgLeft}`}
+          />
+          <img
+            src="/images/about/about-right.jpg"
+            alt=""
+            className={`${styles.imgCard} ${styles.imgRight}`}
+          />
+        </div>
 
       </div>
     </section>

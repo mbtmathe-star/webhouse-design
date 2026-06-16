@@ -1,13 +1,14 @@
 /* ─────────────────────────────────────────
    About Section — Creative Digital Section
+   Layout: Badge → Heading → Paragraph → Image row
+   Images live BELOW text — zero overlap on any screen size
 ───────────────────────────────────────── */
 
 .section {
   background:
     radial-gradient(ellipse at 78% 0%, rgba(0, 149, 223, .40), transparent 52%),
     var(--blue);
-  padding: 104px 40px;
-  /* Scroll reveal — starts hidden */
+  padding: 96px 40px 80px;
   opacity: 0;
   transform: translateY(40px);
   transition: opacity .75s ease, transform .75s ease;
@@ -19,98 +20,48 @@
 }
 
 .inner {
-  position: relative;
   width: min(1060px, 100%);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ─── Float images ─── */
-.floatImg {
-  position: absolute;
-  width: 280px;
-  height: 185px;
-  object-fit: cover;
-  /* White inner border + white outer ring — polished frame on blue background */
-  border: 4px solid #fff;
-  border-radius: 16px;
-  box-shadow:
-    0 0 0 3px rgba(255, 255, 255, .55),
-    0 20px 50px rgba(0, 0, 0, .30),
-    0 0 22px rgba(255, 255, 255, .08);
-  transition: box-shadow .3s ease;
-  will-change: transform;
-}
-
-/* Hover: pause float + brighten white ring */
-.floatImg:hover {
-  animation-play-state: paused;
-  box-shadow:
-    0 0 0 3px rgba(255, 255, 255, .92),
-    0 28px 60px rgba(0, 0, 0, .38),
-    0 0 32px rgba(255, 255, 255, .18);
-}
-
-/* Left image — floats gently upward */
-.left {
-  left: 0;
-  top: 24px;
-  animation: floatLeft 6s ease-in-out infinite;
-}
-
-/* Right image — offset phase so they don't float in sync */
-.right {
-  right: 0;
-  top: 36px;
-  animation: floatRight 7s ease-in-out infinite;
-  animation-delay: -2s;
-}
-
-/* Rotation held constant in keyframes — only Y translates */
-@keyframes floatLeft {
-  0%, 100% { transform: rotate(-7deg) translateY(0); }
-  50%       { transform: rotate(-7deg) translateY(-10px); }
-}
-
-@keyframes floatRight {
-  0%, 100% { transform: rotate(6deg) translateY(0); }
-  50%       { transform: rotate(6deg) translateY(-12px); }
-}
-
-/* ─── Headline ─── */
+/* ─── Zone 1: Badge + Heading ─── */
 .headline {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
   text-align: center;
-  padding-top: 14px;
+  width: 100%;
 }
 
 .badge {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-4deg);
   display: inline-flex;
-  min-height: 40px;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 22px;
+  min-height: 40px;
   border-radius: 999px;
   background: #fff;
   color: var(--blue);
   font-size: 11px;
   font-weight: 900;
   letter-spacing: .06em;
+  text-transform: uppercase;
   white-space: nowrap;
   box-shadow: 0 10px 24px rgba(0, 0, 0, .20);
-  z-index: 1;
+  transform: rotate(-4deg);
 }
 
 .headline h2 {
   margin: 0;
   font-family: var(--font-heading);
   text-transform: uppercase;
-  font-size: clamp(44px, 6.8vw, 98px);
-  line-height: 1.05;
-  letter-spacing: -.02em;
+  font-size: clamp(40px, 5.8vw, 80px);
+  line-height: 1.08;
+  letter-spacing: -.025em;
 }
 
 /* "Creative Digital And Technology" — black on blue */
@@ -123,92 +74,121 @@
   color: #fff;
 }
 
-/* ─── Body copy ─── */
+/* ─── Zone 2: Paragraph ─── */
 .copy {
-  max-width: 680px;
-  margin: 48px auto 0;
-  color: rgba(255, 255, 255, .78);
+  max-width: 660px;
+  width: 100%;
+  margin: 44px 0 0;
+  color: rgba(255, 255, 255, .82);
   text-align: center;
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.88;
+}
+
+/* ─── Zone 3: Image row (always below text) ─── */
+.imageRow {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 60px;
+  width: 100%;
+  /* Extra bottom padding so rotated corners don't clip */
+  padding-bottom: 20px;
+}
+
+.imgCard {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 185px;
+  object-fit: cover;
+  border: 4px solid #fff;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, .55),
+    0 20px 50px rgba(0, 0, 0, .30),
+    0 0 22px rgba(255, 255, 255, .08);
+  will-change: transform;
+}
+
+.imgLeft {
+  animation: floatLeft 6s ease-in-out infinite;
+}
+
+.imgRight {
+  animation: floatRight 7s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@keyframes floatLeft {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  50%       { transform: rotate(-5deg) translateY(-10px); }
+}
+
+@keyframes floatRight {
+  0%, 100% { transform: rotate(5deg) translateY(0); }
+  50%       { transform: rotate(5deg) translateY(-10px); }
 }
 
 /* ─── Responsive ─── */
 @media (max-width: 1000px) {
   .section {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 80px 24px 64px;
+  }
+}
+
+@media (max-width: 760px) {
+  .imageRow {
+    gap: 16px;
+    margin-top: 44px;
   }
 
-  .floatImg {
-    width: 210px;
+  .imgCard {
+    width: calc(50% - 8px);
+    max-width: 210px;
     height: 138px;
   }
 }
 
-/* ─── Mobile image row ─── */
-.mobileImageRow {
-  display: none;
-}
-
-@media (max-width: 760px) {
-  .floatImg {
-    display: none;
-  }
-
-  .mobileImageRow {
-    display: flex;
-    gap: 12px;
-    margin: 28px 0 0;
-    justify-content: center;
-  }
-
-  .mobileImg {
-    width: calc(50% - 6px);
-    max-width: 190px;
-    height: 124px;
-    object-fit: cover;
-    border-radius: 14px;
-    border: 3px solid #fff;
-    box-shadow:
-      0 0 0 2px rgba(255, 255, 255, .40),
-      0 12px 32px rgba(0, 0, 0, .26);
-  }
-}
-
 @media (max-width: 680px) {
-  .section {
-    padding: 80px 20px;
-  }
-
   .headline h2 {
-    font-size: clamp(38px, 10vw, 56px);
+    font-size: clamp(36px, 9.5vw, 54px);
   }
 
   .copy {
     font-size: 15px;
+    margin-top: 32px;
+  }
+
+  .imageRow {
     margin-top: 36px;
   }
 }
 
 @media (max-width: 430px) {
   .section {
-    padding: 68px 16px;
+    padding: 68px 16px 56px;
   }
 
   .headline h2 {
-    font-size: clamp(34px, 9.5vw, 48px);
+    font-size: clamp(32px, 9vw, 46px);
   }
 
   .copy {
     font-size: 14.5px;
     margin-top: 24px;
-    line-height: 1.78;
+    line-height: 1.80;
   }
 
-  .mobileImg {
-    max-width: 160px;
-    height: 106px;
+  .imageRow {
+    gap: 12px;
+    margin-top: 28px;
+    padding-bottom: 12px;
+  }
+
+  .imgCard {
+    width: calc(50% - 6px);
+    max-width: 164px;
+    height: 108px;
   }
 }
 
@@ -219,16 +199,13 @@
     transition: none;
   }
 
-  /* Stop float — hold rotation statically */
-  .floatImg {
+  .imgLeft {
     animation: none;
+    transform: rotate(-5deg);
   }
 
-  .left {
-    transform: rotate(-7deg);
-  }
-
-  .right {
-    transform: rotate(6deg);
+  .imgRight {
+    animation: none;
+    transform: rotate(5deg);
   }
 }
