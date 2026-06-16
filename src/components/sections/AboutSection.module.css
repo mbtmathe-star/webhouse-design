@@ -106,11 +106,11 @@
 
 .headline h2 {
   margin: 0;
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: clamp(44px, 6.8vw, 98px);
-  line-height: .92;
-  letter-spacing: -.04em;
+  line-height: 1.05;
+  letter-spacing: -.02em;
 }
 
 /* "Creative Digital And Technology" — black on blue */

@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { company } from '../../data/company'
 import styles from './Navbar.module.css'
 
 function navCls({ isActive }) {
-  return isActive ? styles.active : undefined
+  return `${styles.navLink}${isActive ? ` ${styles.active}` : ''}`
 }
 
 function mobileCls({ isActive }) {
@@ -19,15 +18,8 @@ export default function Navbar() {
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Main navigation">
 
-        {/* Desktop — left links */}
-        <div className={styles.navLinks}>
-          <NavLink to="/about" className={navCls}>About</NavLink>
-          <NavLink to="/services" className={navCls}>Services</NavLink>
-          <NavLink to="/portfolio" className={navCls}>Portfolio</NavLink>
-        </div>
-
-        {/* Centre — logo */}
-        <Link to="/" className={styles.logoLink} aria-label="The Web House — Home">
+        {/* Logo — left */}
+        <Link to="/" className={styles.logoLink} onClick={close} aria-label="The Web House — Home">
           <img
             src="/images/brand/web-house-logo.png"
             className={styles.logo}
@@ -35,26 +27,33 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop — right */}
-        <div className={styles.navRight}>
-          <span className={styles.since}>Since {company.founded}</span>
-          <Link to="/contact" className={styles.btn}>Contact</Link>
+        {/* Desktop links — centre */}
+        <div className={styles.navLinks}>
+          <NavLink to="/" end className={navCls}>Home</NavLink>
+          <NavLink to="/about" className={navCls}>About</NavLink>
+          <NavLink to="/services" className={navCls}>Services</NavLink>
+          <NavLink to="/portfolio" className={navCls}>Portfolio</NavLink>
+          <NavLink to="/contact" className={navCls}>Contact</NavLink>
         </div>
 
-        {/* Mobile — burger button */}
-        <button
-          className={`${styles.burger} ${open ? styles.burgerOpen : ''}`}
-          onClick={() => setOpen(o => !o)}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-        >
-          <span className={styles.bar} />
-          <span className={styles.bar} />
-          <span className={styles.bar} />
-        </button>
+        {/* Right — CTA + burger */}
+        <div className={styles.navRight}>
+          <Link to="/contact" className={styles.ctaBtn}>Start a Project</Link>
 
-        {/* Mobile — dropdown */}
+          <button
+            className={`${styles.burger} ${open ? styles.burgerOpen : ''}`}
+            onClick={() => setOpen(o => !o)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+          >
+            <span className={styles.bar} />
+            <span className={styles.bar} />
+            <span className={styles.bar} />
+          </button>
+        </div>
+
+        {/* Mobile dropdown */}
         <div
           id="mobile-nav"
           className={`${styles.mobileMenu} ${open ? styles.mobileOpen : ''}`}

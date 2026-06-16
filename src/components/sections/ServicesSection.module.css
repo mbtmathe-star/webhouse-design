@@ -33,11 +33,11 @@
 
 .splitTitle h2 {
   margin: 0;
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: clamp(38px, 5.5vw, 80px);
-  line-height: .92;
-  letter-spacing: -.04em;
+  line-height: 1.05;
+  letter-spacing: -.02em;
   color: var(--black);
 }
 

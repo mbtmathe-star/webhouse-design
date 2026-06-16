@@ -40,11 +40,11 @@
 
 .heroHeading {
   margin: 0 0 24px;
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: clamp(64px, 11vw, 148px);
-  line-height: .88;
-  letter-spacing: -.04em;
+  line-height: 1.05;
+  letter-spacing: -.02em;
   color: var(--black);
 }
 
@@ -97,11 +97,11 @@
 }
 
 .ctaHeading {
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: clamp(44px, 7vw, 96px);
-  line-height: .9;
-  letter-spacing: -.04em;
+  line-height: 1.05;
+  letter-spacing: -.02em;
   color: #fff;
   margin: 0 0 20px;
 }

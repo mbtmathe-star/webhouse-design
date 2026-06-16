@@ -40,11 +40,11 @@
 
 .heroHeading {
   margin: 0 0 24px;
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: clamp(56px, 9vw, 128px);
-  line-height: .88;
-  letter-spacing: -.04em;
+  line-height: 1.05;
+  letter-spacing: -.02em;
   color: var(--black);
 }
 
@@ -81,11 +81,11 @@
 }
 
 .sectionHeading {
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: clamp(40px, 6vw, 88px);
-  line-height: .92;
-  letter-spacing: -.04em;
+  line-height: 1.05;
+  letter-spacing: -.02em;
   color: var(--black);
   margin: 0 0 28px;
 }
@@ -159,7 +159,7 @@
 }
 
 .statValue {
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(36px, 5vw, 56px);
   line-height: 1;
   letter-spacing: -.02em;
@@ -224,11 +224,11 @@
 }
 
 .ctaHeading {
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: clamp(40px, 6.5vw, 80px);
-  line-height: .92;
-  letter-spacing: -.04em;
+  line-height: 1.05;
+  letter-spacing: -.02em;
   color: var(--black);
   margin: 0 0 20px;
 }

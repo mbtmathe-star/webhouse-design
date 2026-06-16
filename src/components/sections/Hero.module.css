@@ -78,7 +78,7 @@
   z-index: 4;
   text-align: center;
   width: min(980px, 96%);
-  margin: 76px auto 0;
+  margin: 90px auto 0;
 }
 
 .label {
@@ -98,11 +98,11 @@
 .heroContent h1 {
   margin: 0;
   color: #fff;
-  font-family: Impact, 'Arial Black', sans-serif;
-  text-transform: uppercase;
-  font-size: clamp(52px, 8.4vw, 124px);
-  line-height: .88;
-  letter-spacing: -.045em;
+  font-family: var(--font-heading);
+  font-size: clamp(46px, 7.5vw, 96px);
+  line-height: 1.05;
+  letter-spacing: -.025em;
+  font-weight: 700;
   text-shadow: 0 4px 24px rgba(0, 0, 0, .50), 0 1px 0 rgba(0, 0, 0, .12);
 }
 
@@ -291,23 +291,23 @@
 /* ─── Responsive ─── */
 @media (max-width: 1000px) {
   .hero { min-height: 880px; }
-  .heroContent { margin-top: 200px; }
+  .heroContent { margin-top: 160px; }
   .arrow { display: none; }
 }
 
 @media (max-width: 680px) {
   .hero { min-height: 760px; }
-  .heroContent { margin-top: 210px; }
+  .heroContent { margin-top: 160px; }
   .heroContent h1 {
-    font-size: clamp(36px, 12vw, 56px);
-    letter-spacing: -.035em;
+    font-size: clamp(30px, 10vw, 50px);
+    letter-spacing: -.018em;
   }
   .subline { font-size: 14px; }
 }
 
 @media (max-width: 430px) {
   .hero { min-height: 780px; }
-  .heroContent { margin-top: 190px; }
+  .heroContent { margin-top: 140px; }
   .subline {
     font-size: 13.5px;
     width: min(500px, 96%);

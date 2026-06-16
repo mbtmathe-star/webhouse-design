@@ -96,7 +96,7 @@
 /* Service title */
 .title {
   margin: 0 0 10px;
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
   font-size: 20px;
   line-height: 1.08;

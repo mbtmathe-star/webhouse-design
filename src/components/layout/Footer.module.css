@@ -148,12 +148,12 @@
 /* ─── Brand watermark ─── */
 .footerBrand {
   margin: 0 0 20px;
-  font-family: Impact, 'Arial Black', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 900;
   text-transform: uppercase;
   font-size: clamp(70px, 12vw, 166px);
   line-height: .82;
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
   color: #050505;
   user-select: none;
 }
