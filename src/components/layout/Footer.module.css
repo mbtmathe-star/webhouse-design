@@ -152,7 +152,7 @@
   font-weight: 900;
   text-transform: uppercase;
   font-size: clamp(70px, 12vw, 166px);
-  line-height: .82;
+  line-height: 1.0;
   letter-spacing: -.02em;
   color: #050505;
   user-select: none;

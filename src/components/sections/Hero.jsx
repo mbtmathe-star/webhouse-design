@@ -4,10 +4,7 @@ import styles from './Hero.module.css'
 export default function Hero() {
   return (
     <section className={styles.hero} aria-label="The Web House hero">
-      <span className={styles.heroBefore} aria-hidden="true" />
-
       <div className={styles.heroContent}>
-        <span className={styles.arrow} aria-hidden="true" />
         <span className={styles.label}>Digital solutions that deliver</span>
         <h1>
           Helping Brands<br />
@@ -22,12 +19,6 @@ export default function Hero() {
         <div className={styles.heroCtas}>
           <Link to="/contact" className={styles.heroCtaPrimary}>Start a Project</Link>
           <Link to="/services" className={styles.heroCtaSecondary}>View Services</Link>
-        </div>
-        <div className={styles.blobOrbit} aria-hidden="true">
-          <span className={`${styles.blob} ${styles.b1}`} />
-          <span className={`${styles.blob} ${styles.b2}`} />
-          <span className={`${styles.blob} ${styles.b3}`} />
-          <span className={`${styles.blob} ${styles.b4}`} />
         </div>
       </div>
     </section>
