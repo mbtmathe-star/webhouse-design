@@ -14,7 +14,7 @@ export default function Footer() {
         <div className={styles.brandCol}>
           <Link to="/" aria-label="The Web House — Home">
             <div className={styles.footerLogo}>
-              <img src="/images/brand/web-house-logo.png" alt="The Web House" />
+              <img src="/images/brand/web-house-logo-transparent.png" alt="The Web House" />
             </div>
           </Link>
           <p className={styles.brandDesc}>

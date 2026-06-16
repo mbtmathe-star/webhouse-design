@@ -21,7 +21,7 @@ export default function Navbar() {
         {/* Logo — left */}
         <Link to="/" className={styles.logoLink} onClick={close} aria-label="The Web House — Home">
           <img
-            src="/images/brand/web-house-logo.png"
+            src="/images/brand/web-house-logo-transparent.png"
             className={styles.logo}
             alt="The Web House"
           />
