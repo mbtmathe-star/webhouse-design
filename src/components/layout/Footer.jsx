@@ -57,7 +57,7 @@ export default function Footer() {
 
       </div>
 
-      <h2 className={styles.footerBrand}>{company.name}*</h2>
+      <h2 className={styles.footerBrand}>{company.name}</h2>
 
       <div className={styles.footerBottom}>
         <span>&copy; {year} {company.name}. Founded {company.founded}.</span>
