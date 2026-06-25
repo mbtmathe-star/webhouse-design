@@ -1,9 +1,30 @@
 import { Link } from 'react-router-dom'
+import { useRef, useState, useEffect } from 'react'
 import { company } from '../../data/company'
 import styles from './Footer.module.css'
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const brandRef = useRef(null)
+  const [waveActive, setWaveActive] = useState(false)
+
+  useEffect(() => {
+    const el = brandRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setWaveActive(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.2 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  const chars = company.name.toUpperCase().split('')
 
   return (
     <footer className={styles.footer} id="contact">
@@ -57,7 +78,25 @@ export default function Footer() {
 
       </div>
 
-      <h2 className={styles.footerBrand}>{company.name}</h2>
+      <h2
+        ref={brandRef}
+        className={styles.footerBrand}
+        aria-label={company.name}
+      >
+        {chars.map((char, i) =>
+          char === ' ' ? (
+            <span key={i} className={styles.brandSpace}>&nbsp;</span>
+          ) : (
+            <span
+              key={i}
+              className={`${styles.brandLetter}${waveActive ? ` ${styles.waveActive}` : ''}`}
+              style={{ '--i': i }}
+            >
+              {char}
+            </span>
+          )
+        )}
+      </h2>
 
       <div className={styles.footerBottom}>
         <span>&copy; {year} {company.name}. Founded {company.founded}.</span>
