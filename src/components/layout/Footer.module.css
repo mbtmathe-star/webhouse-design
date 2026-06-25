@@ -147,7 +147,10 @@
 
 /* ─── Brand watermark ─── */
 .footerBrand {
-  margin: 0 0 20px;
+  /* Negative margins break out of the footer's side padding so the text
+     has the full viewport width — prevents clipping on any screen size. */
+  margin: 0 -46px 20px;
+  padding-left: 46px;
   font-family: var(--font-heading);
   font-weight: 900;
   text-transform: uppercase;
@@ -157,7 +160,34 @@
   color: #050505;
   user-select: none;
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: clip;
+}
+
+/* ─── Wordmark letter spans ─── */
+.brandLetter {
+  display: inline-block;
+}
+
+.brandSpace {
+  display: inline-block;
+}
+
+.brandLetter.waveActive {
+  animation: letterWave 0.65s ease-out both;
+  animation-delay: calc(var(--i) * 55ms);
+}
+
+@keyframes letterWave {
+  0%   { transform: translateY(0) scale(1); }
+  30%  { transform: translateY(-0.15em) scale(1.04); }
+  60%  { transform: translateY(0.05em) scale(0.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brandLetter.waveActive {
+    animation: none;
+  }
 }
 
 /* ─── Bottom bar ─── */
@@ -195,6 +225,12 @@
     padding: 44px 20px 28px;
   }
 
+  .footerBrand {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+  }
+
   .footerEmail {
     font-size: 20px;
   }
@@ -203,6 +239,12 @@
 @media (max-width: 430px) {
   .footer {
     padding: 40px 16px 24px;
+  }
+
+  .footerBrand {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
   }
 
   .footerBottom {
