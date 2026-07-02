@@ -152,7 +152,7 @@ export default function Services() {
     if (el) {
       const t = setTimeout(() => {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 120)
+      }, 200)
       return () => clearTimeout(t)
     }
   }, [hash])
