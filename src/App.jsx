@@ -7,11 +7,20 @@ import Services from './pages/Services'
 import ServiceDetail from './pages/ServiceDetail'
 import Contact from './pages/Contact'
 
-// Scroll to top on every page navigation, but not when following a hash anchor
+// Disable browser's built-in scroll restoration so we control it ourselves
+if (typeof window !== 'undefined') {
+  window.history.scrollRestoration = 'manual'
+}
+
+// Reset scroll on every page change; skip when navigating with a hash anchor
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
-    if (!hash) window.scrollTo({ top: 0, behavior: 'instant' })
+    if (!hash) {
+      // Set directly on the element — avoids conflicts with css scroll-behavior: smooth
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    }
   }, [pathname, hash])
   return null
 }
