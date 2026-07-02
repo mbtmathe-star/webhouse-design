@@ -36,7 +36,6 @@ export default function ServiceCard({
         <p className={styles.description}>{shortDescription}</p>
         {slug && <span className={styles.viewMorePill}>View More →</span>}
       </div>
-      {slug && <div className={styles.cardOverlay} aria-hidden="true" />}
     </>
   )
 

@@ -129,42 +129,6 @@
   transition: opacity .18s ease;
 }
 
-.card.visible:hover .viewMorePill {
-  opacity: 0;
-}
-
-/* ─── Hover overlay ─── */
-.cardOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(5, 5, 5, .76) 0%, rgba(5, 5, 5, .04) 55%, transparent 100%);
-  opacity: 0;
-  transition: opacity .22s ease;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.cardOverlay::after {
-  content: 'View More →';
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  padding: 8px 22px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .16);
-  border: 1px solid rgba(255, 255, 255, .36);
-}
-
-.card.visible:hover .cardOverlay {
-  opacity: 1;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .card {
