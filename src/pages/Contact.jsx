@@ -83,9 +83,8 @@ export default function Contact() {
             <span className={styles.accent}>Conversation</span>
           </h1>
           <p className={styles.heroCopy}>
-            Not sure where to begin? Send us a general enquiry and The Web House
-            team will help guide you toward the right creative, digital or
-            technology solution.
+            Send us a message and The Web House team will help you find the right
+            creative, digital or technology solution for your business.
           </p>
         </div>
       </header>
@@ -99,7 +98,7 @@ export default function Contact() {
 
           {/* Left — general enquiry form */}
           <div className={styles.formCol}>
-            <p className={styles.formColLabel}>General Enquiry</p>
+            <p className={styles.formColLabel}>Send a Message</p>
             <GeneralContactForm />
           </div>
 

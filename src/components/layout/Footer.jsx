@@ -46,9 +46,9 @@ export default function Footer() {
           <p className={styles.tagline}>{company.tagline}</p>
         </div>
 
-        {/* Column 2 — sitemap */}
+        {/* Column 2 — quick links */}
         <div className={styles.sitemapCol}>
-          <h4>Sitemap</h4>
+          <h4>Quick Links</h4>
           <nav aria-label="Footer navigation">
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>

@@ -1,46 +1,52 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { services } from '../data/services'
 import { useReveal } from '../hooks/useReveal'
-import ServiceCard from '../components/cards/ServiceCard'
 import styles from './Services.module.css'
 
-function ServicesGrid() {
-  const [ref, visible] = useReveal(0.04)
+function ServicePanel({ service, index }) {
+  const [ref, visible] = useReveal(0.08)
+  const [imgError, setImgError] = useState(false)
+  const isReversed = index % 2 === 1
+
   return (
-    <section
-      id="services-grid"
+    <div
       ref={ref}
-      className={`${styles.gridSection} ${visible ? styles.gridVisible : ''}`}
+      className={`${styles.panel} ${visible ? styles.panelVisible : ''} ${isReversed ? styles.panelReverse : ''}`}
     >
-      <div className={styles.gridInner}>
-        <div className={styles.splitTitle}>
-          <h2>What We<br />Offer</h2>
-          <div>
-            <p>
-              The Web House provides creative digital and technology solutions for
-              businesses that need professional branding, strong online platforms,
-              reliable systems and practical technology support.
-            </p>
-            <p style={{ marginTop: '12px', fontSize: '13px', color: 'rgba(255,255,255,.70)' }}>
-              Choose the service that best matches your need. If you are unsure where
-              to start, send a general enquiry and our team will help guide you toward
-              the right solution.
-            </p>
-          </div>
-          <h2 className={styles.right}>For<br />Business</h2>
-        </div>
-        <div className={styles.grid}>
-          {services.map((service, i) => (
-            <ServiceCard
-              key={service.id}
-              {...service}
-              index={i}
-              sectionVisible={visible}
-            />
-          ))}
-        </div>
+      <div className={styles.panelImageCol}>
+        {!imgError ? (
+          <img
+            src={service.image}
+            alt={service.title}
+            className={styles.panelImg}
+            loading="lazy"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className={styles.panelImgFallback} aria-hidden="true" />
+        )}
       </div>
-    </section>
+
+      <div className={styles.panelContent}>
+        <span className={styles.panelNum}>{service.number}</span>
+        <h2 className={styles.panelTitle}>{service.title}</h2>
+        <p className={styles.panelDesc}>{service.shortDescription}</p>
+        {service.helpsWithPoints && (
+          <ul className={styles.panelPoints}>
+            {service.helpsWithPoints.slice(0, 3).map((point, i) => (
+              <li key={i} className={styles.panelPoint}>
+                <span className={styles.panelDot} aria-hidden="true" />
+                {point}
+              </li>
+            ))}
+          </ul>
+        )}
+        <Link to={`/services/${service.slug}`} className={styles.panelCta}>
+          Explore Service →
+        </Link>
+      </div>
+    </div>
   )
 }
 
@@ -61,7 +67,7 @@ function ServicesCta() {
           preparing a customised quotation based on your selected service,
           timeline and project scope.
         </p>
-        <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div className={styles.ctaBtns}>
           <Link to="/contact" className={styles.ctaBtn}>Start a Project</Link>
           <Link to="/contact" className={`${styles.ctaBtn} ${styles.ctaBtnSecondary}`}>Speak to Our Team</Link>
         </div>
@@ -76,37 +82,26 @@ export default function Services() {
 
       <header className={styles.hero}>
         <div className={styles.heroInner}>
-          <span className={styles.badge}>What We Do</span>
+          <span className={styles.badge}>What We Offer</span>
           <h1 className={styles.heroHeading}>
-            Our<br />
-            <span className={styles.accent}>Services</span>
+            Our <span className={styles.accent}>Services</span>
           </h1>
           <p className={styles.heroCopy}>
             The Web House provides creative digital and technology solutions for
             businesses that need professional branding, strong online platforms,
             reliable systems and practical technology support.
           </p>
-          <div className={styles.heroGuide}>
-            <p className={styles.heroGuideHeading}>
-              Choose the service that best matches your need.
-            </p>
-            <p className={styles.heroGuideCopy}>
-              If you are unsure where to start, send a general enquiry and our team
-              will help guide you toward the right solution.
-            </p>
-            <div className={styles.heroGuideBtns}>
-              <a href="#services-grid" className={styles.heroGuidePrimary}>
-                View Service Details
-              </a>
-              <Link to="/contact" className={styles.heroGuideSecondary}>
-                General Enquiry
-              </Link>
-            </div>
-          </div>
         </div>
       </header>
 
-      <ServicesGrid />
+      <section className={styles.panelsList}>
+        <div className={styles.panelsInner}>
+          {services.map((service, i) => (
+            <ServicePanel key={service.id} service={service} index={i} />
+          ))}
+        </div>
+      </section>
+
       <ServicesCta />
 
     </div>

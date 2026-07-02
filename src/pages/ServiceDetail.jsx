@@ -150,10 +150,9 @@ export default function ServiceDetail() {
           <ServiceRequestForm key={service.slug} service={service} />
           <div className={styles.afterSubmitNote}>
             <p>
-              After you submit your request, The Web House will review your requirements
-              and prepare a customised quotation or invoice based on the selected service,
-              project scope and timeline. This frontend form is ready for connection in a
-              future production phase and does not currently send data to a backend.
+              After submitting, The Web House will review your requirements and follow up
+              directly to prepare a customised quotation based on your selected service,
+              project scope and timeline.
             </p>
           </div>
           <div className={styles.formFootNote}>
