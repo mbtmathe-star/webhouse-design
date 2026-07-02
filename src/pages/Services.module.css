@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────
-   Services Page — Expanded Panel Layout
+   Services Page — Full Expanded Hub
 ───────────────────────────────────────── */
 
 .page {}
@@ -62,7 +62,7 @@
   line-height: 1.85;
 }
 
-/* ─── Expanded service panels ─── */
+/* ─── Panels list ─── */
 .panelsList {
   background: #fff;
   padding: 0 40px;
@@ -73,19 +73,17 @@
   margin: 0 auto;
 }
 
-.panel {
-  display: grid;
-  grid-template-columns: 45fr 55fr;
-  gap: 64px;
-  align-items: center;
-  padding: 72px 0;
+/* ─── Single service panel wrapper ─── */
+.panelWrapper {
   border-bottom: 1px solid #eaecef;
+  padding: 72px 0;
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity .65s ease, transform .65s ease;
+  transition: opacity .6s ease, transform .6s ease;
+  scroll-margin-top: 116px;
 }
 
-.panel:last-child {
+.panelWrapper:last-child {
   border-bottom: none;
   padding-bottom: 80px;
 }
@@ -95,17 +93,27 @@
   transform: none;
 }
 
+/* ─── Two-column grid inside each panel ─── */
+.panelGrid {
+  display: grid;
+  grid-template-columns: 44fr 56fr;
+  gap: 56px;
+  align-items: start;
+}
+
 /* Even panels: content left, image right */
 .panelReverse {
-  grid-template-columns: 55fr 45fr;
+  grid-template-columns: 56fr 44fr;
 }
 
 .panelReverse .panelImageCol {
   order: 2;
 }
 
-/* ─── Panel image ─── */
+/* ─── Image column ─── */
 .panelImageCol {
+  position: sticky;
+  top: 120px;
   overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, .10);
@@ -120,8 +128,8 @@
   transition: transform .45s ease;
 }
 
-.panel:hover .panelImg {
-  transform: scale(1.03);
+.panelWrapper:hover .panelImg {
+  transform: scale(1.025);
 }
 
 .panelImgFallback {
@@ -131,7 +139,7 @@
   border-radius: 16px;
 }
 
-/* ─── Panel content ─── */
+/* ─── Content column ─── */
 .panelContent {
   display: flex;
   flex-direction: column;
@@ -145,7 +153,7 @@
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--blue);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .panelTitle {
@@ -159,45 +167,69 @@
 }
 
 .panelDesc {
-  margin: 0 0 22px;
+  margin: 0 0 24px;
   color: #5c6166;
   font-size: 15px;
   line-height: 1.75;
-  max-width: 440px;
 }
 
-.panelPoints {
+/* ─── Points blocks ─── */
+.pointsBlock {
+  margin-bottom: 22px;
+  width: 100%;
+}
+
+.pointsLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.pointsList {
   list-style: none;
   padding: 0;
-  margin: 0 0 28px;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
-.panelPoint {
+/* 2-column grid for "what can be included" bullet list */
+.pointsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.pointItem {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
   color: #444;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 13.5px;
+  line-height: 1.45;
 }
 
-.panelDot {
+.pointDot {
   flex-shrink: 0;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--blue);
   margin-top: 5px;
 }
 
+/* ─── Start Project button ─── */
 .panelCta {
+  margin-top: 8px;
   display: inline-flex;
   align-items: center;
   padding: 0 28px;
-  height: 46px;
+  height: 48px;
   border-radius: 999px;
   background: var(--black);
   color: #fff;
@@ -205,6 +237,8 @@
   font-weight: 700;
   letter-spacing: .04em;
   text-transform: uppercase;
+  border: none;
+  cursor: pointer;
   transition: background .2s ease, transform .2s ease;
 }
 
@@ -213,7 +247,67 @@
   transform: translateY(-2px);
 }
 
-/* ─── CTA section ─── */
+.panelCtaActive {
+  background: #666;
+}
+
+.panelCtaActive:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+/* ─── Inline form ─── */
+.inlineForm {
+  margin-top: 40px;
+  padding: 48px 40px;
+  background: #f4f6f8;
+  border-radius: 16px;
+  border: 1px solid #dde0e3;
+  scroll-margin-top: 116px;
+}
+
+.inlineFormHeader {
+  margin-bottom: 32px;
+}
+
+.inlineFormEyebrow {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin: 0 0 10px;
+}
+
+.inlineFormTitle {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-size: clamp(22px, 2.8vw, 34px);
+  line-height: 1.1;
+  letter-spacing: -.015em;
+  color: var(--black);
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.inlineFormSub {
+  color: #5c6166;
+  font-size: 14.5px;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 540px;
+}
+
+.inlineFormNote {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #dde0e3;
+  font-size: 13px;
+  color: #888;
+  line-height: 1.65;
+}
+
+/* ─── Bottom CTA section ─── */
 .cta {
   padding: 88px 40px;
   background: #050505;
@@ -229,7 +323,7 @@
 }
 
 .ctaInner {
-  width: min(560px, 100%);
+  width: min(500px, 100%);
   margin: 0 auto;
 }
 
@@ -245,7 +339,7 @@
 .ctaHeading {
   font-family: var(--font-heading);
   text-transform: uppercase;
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: clamp(40px, 6vw, 80px);
   line-height: 1.05;
   letter-spacing: -.02em;
   color: #fff;
@@ -289,17 +383,6 @@
   box-shadow: 0 18px 40px rgba(0, 149, 223, .44);
 }
 
-.ctaBtnSecondary {
-  background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, .36);
-  box-shadow: none;
-}
-
-.ctaBtnSecondary:hover {
-  background: rgba(255, 255, 255, .10);
-  box-shadow: none;
-}
-
 /* ─── Responsive ─── */
 @media (max-width: 1000px) {
   .hero {
@@ -313,28 +396,34 @@
     padding-right: 24px;
   }
 
-  .panel,
+  .panelGrid,
   .panelReverse {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    padding: 56px 0;
+  }
+
+  .panelImageCol {
+    position: static;
   }
 }
 
 @media (max-width: 768px) {
-  .panel,
+  .panelGrid,
   .panelReverse {
     grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 48px 0;
+    gap: 24px;
   }
 
   .panelReverse .panelImageCol {
     order: 0;
   }
 
-  .panelDesc {
-    max-width: 100%;
+  .pointsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .inlineForm {
+    padding: 32px 20px;
   }
 }
 
@@ -346,6 +435,10 @@
   .panelsList {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .panelWrapper {
+    padding: 48px 0;
   }
 
   .cta {
@@ -366,14 +459,18 @@
     font-size: 14.5px;
   }
 
-  .panel,
-  .panelReverse {
+  .panelWrapper {
     padding: 40px 0;
-    gap: 24px;
+    scroll-margin-top: 92px;
   }
 
   .ctaHeading {
-    font-size: clamp(40px, 12vw, 64px);
+    font-size: clamp(36px, 11vw, 56px);
+  }
+
+  .inlineForm {
+    padding: 28px 16px;
+    margin-top: 28px;
   }
 }
 
@@ -382,7 +479,7 @@
     animation: none;
   }
 
-  .panel,
+  .panelWrapper,
   .cta {
     opacity: 1;
     transform: none;

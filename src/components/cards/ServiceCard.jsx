@@ -40,7 +40,7 @@ export default function ServiceCard({
   )
 
   return slug ? (
-    <Link to={`/services/${slug}`} className={cls} style={style} aria-label={title}>
+    <Link to={{ pathname: '/services', hash: `#${slug}` }} className={cls} style={style} aria-label={title}>
       {inner}
     </Link>
   ) : (
