@@ -123,7 +123,7 @@
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: #444;
   align-self: flex-start;
   opacity: 1;
   transition: opacity .18s ease;
@@ -137,7 +137,7 @@
 .cardOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 118, 191, .82) 0%, rgba(0, 118, 191, .08) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(5, 5, 5, .76) 0%, rgba(5, 5, 5, .04) 55%, transparent 100%);
   opacity: 0;
   transition: opacity .22s ease;
   pointer-events: none;

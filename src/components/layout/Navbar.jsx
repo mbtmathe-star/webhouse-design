@@ -32,7 +32,6 @@ export default function Navbar() {
           <NavLink to="/" end className={navCls}>Home</NavLink>
           <NavLink to="/about" className={navCls}>About</NavLink>
           <NavLink to="/services" className={navCls}>Services</NavLink>
-          <NavLink to="/portfolio" className={navCls}>Portfolio</NavLink>
           <NavLink to="/contact" className={navCls}>Contact</NavLink>
         </div>
 
@@ -62,7 +61,6 @@ export default function Navbar() {
           <NavLink to="/" end className={mobileCls} onClick={close}>Home</NavLink>
           <NavLink to="/about" className={mobileCls} onClick={close}>About</NavLink>
           <NavLink to="/services" className={mobileCls} onClick={close}>Services</NavLink>
-          <NavLink to="/portfolio" className={mobileCls} onClick={close}>Portfolio</NavLink>
           <NavLink to="/contact" className={mobileCls} onClick={close}>Contact</NavLink>
           <Link to="/contact" className={styles.mobileCtaBtn} onClick={close}>
             Start a Project
