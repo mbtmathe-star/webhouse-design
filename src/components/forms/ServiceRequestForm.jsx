@@ -155,12 +155,14 @@ export default function ServiceRequestForm({ service }) {
     if (Object.keys(errs).length > 0) return
     setLoading(true)
     try {
-      const formData = new FormData(evt.target)
-      formData.append('accessKey', '451095c5e102fa70aeceb69a705aaf0d428635c39b8901fef3daa2f9ad1635cc')
-      formData.append('service_requested', service.title)
-      const res = await fetch('https://silentforms.com/api/submit', {
+      const res = await fetch('/api/submit', {
         method: 'POST',
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          subject: `Service Request — ${service.title}`,
+          service: service.title,
+          ...form,
+        }),
       })
       if (res.ok) {
         setSubmitted(true)
