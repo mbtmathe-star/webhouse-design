@@ -155,14 +155,15 @@ export default function ServiceRequestForm({ service }) {
     if (Object.keys(errs).length > 0) return
     setLoading(true)
     try {
-      const formData = new FormData(evt.target)
-      formData.append('_subject', `Service Request — ${service.title}`)
-      formData.append('_captcha', 'false')
-      formData.append('service_requested', service.title)
-      const res = await fetch('https://formsubmit.co/info@thewebhouse.africa', {
+      const res = await fetch('https://formsubmit.co/ajax/info@thewebhouse.africa', {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: formData,
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          service_requested: service.title,
+          _subject: `Service Request — ${service.title}`,
+          _captcha: 'false',
+        }),
       })
       const data = await res.json()
       if (data.success === 'true' || data.success === true) {

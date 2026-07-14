@@ -93,13 +93,14 @@ export default function GeneralContactForm() {
     if (Object.keys(errs).length > 0) return
     setLoading(true)
     try {
-      const formData = new FormData(evt.target)
-      formData.append('_subject', 'General Enquiry — The Web House')
-      formData.append('_captcha', 'false')
-      const res = await fetch('https://formsubmit.co/info@thewebhouse.africa', {
+      const res = await fetch('https://formsubmit.co/ajax/info@thewebhouse.africa', {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: formData,
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          _subject: 'General Enquiry — The Web House',
+          _captcha: 'false',
+        }),
       })
       const data = await res.json()
       if (data.success === 'true' || data.success === true) {
