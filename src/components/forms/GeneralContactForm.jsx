@@ -94,11 +94,15 @@ export default function GeneralContactForm() {
     setLoading(true)
     try {
       const formData = new FormData(evt.target)
-      const res = await fetch('https://formdump.com/f/41bb4bc8-20b5-4b92-a91e-01bc01186860', {
+      formData.append('_subject', 'General Enquiry — The Web House')
+      formData.append('_captcha', 'false')
+      const res = await fetch('https://formsubmit.co/info@thewebhouse.africa', {
         method: 'POST',
+        headers: { Accept: 'application/json' },
         body: formData,
       })
-      if (res.ok) {
+      const data = await res.json()
+      if (data.success === 'true' || data.success === true) {
         setSubmitted(true)
       } else {
         setErrors({ _submit: 'Something went wrong. Please try again or email info@thewebhouse.africa.' })
