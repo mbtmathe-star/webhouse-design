@@ -94,15 +94,11 @@ export default function GeneralContactForm() {
     setLoading(true)
     try {
       const formData = new FormData(evt.target)
-      formData.append('access_key', '50e76e02-9001-46e6-9165-8e83ca2ed060')
-      formData.append('subject', 'General Enquiry — The Web House')
-      formData.append('from_name', form.fullName)
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://formdump.com/f/41bb4bc8-20b5-4b92-a91e-01bc01186860', {
         method: 'POST',
         body: formData,
       })
-      const data = await res.json()
-      if (data.success) {
+      if (res.ok) {
         setSubmitted(true)
       } else {
         setErrors({ _submit: 'Something went wrong. Please try again or email info@thewebhouse.africa.' })
