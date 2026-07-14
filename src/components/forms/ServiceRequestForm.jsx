@@ -155,19 +155,14 @@ export default function ServiceRequestForm({ service }) {
     if (Object.keys(errs).length > 0) return
     setLoading(true)
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const formData = new FormData(evt.target)
+      formData.append('accessKey', '451095c5e102fa70aeceb69a705aaf0d428635c39b8901fef3daa2f9ad1635cc')
+      formData.append('service_requested', service.title)
+      const res = await fetch('https://silentforms.com/api/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: '50e76e02-9001-46e6-9165-8e83ca2ed060',
-          subject: `Service Request — ${service.title}`,
-          from_name: form.fullName,
-          service_requested: service.title,
-          ...form,
-        }),
+        body: formData,
       })
-      const data = await res.json()
-      if (data.success) {
+      if (res.ok) {
         setSubmitted(true)
       } else {
         setErrors({ _submit: 'Something went wrong. Please try again or email info@thewebhouse.africa.' })
