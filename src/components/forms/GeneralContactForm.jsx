@@ -93,15 +93,13 @@ export default function GeneralContactForm() {
     if (Object.keys(errs).length > 0) return
     setLoading(true)
     try {
+      const formData = new FormData(evt.target)
+      formData.append('access_key', '50e76e02-9001-46e6-9165-8e83ca2ed060')
+      formData.append('subject', 'General Enquiry — The Web House')
+      formData.append('from_name', form.fullName)
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: '50e76e02-9001-46e6-9165-8e83ca2ed060',
-          subject: 'General Enquiry — The Web House',
-          from_name: form.fullName,
-          ...form,
-        }),
+        body: formData,
       })
       const data = await res.json()
       if (data.success) {

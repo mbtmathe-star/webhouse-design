@@ -155,16 +155,14 @@ export default function ServiceRequestForm({ service }) {
     if (Object.keys(errs).length > 0) return
     setLoading(true)
     try {
+      const formData = new FormData(evt.target)
+      formData.append('access_key', '50e76e02-9001-46e6-9165-8e83ca2ed060')
+      formData.append('subject', `Service Request — ${service.title}`)
+      formData.append('from_name', form.fullName)
+      formData.append('service_requested', service.title)
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: '50e76e02-9001-46e6-9165-8e83ca2ed060',
-          subject: `Service Request — ${service.title}`,
-          from_name: form.fullName,
-          service_requested: service.title,
-          ...form,
-        }),
+        body: formData,
       })
       const data = await res.json()
       if (data.success) {
