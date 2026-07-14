@@ -155,18 +155,19 @@ export default function ServiceRequestForm({ service }) {
     if (Object.keys(errs).length > 0) return
     setLoading(true)
     try {
-      const res = await fetch('https://formsubmit.co/ajax/info@thewebhouse.africa', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          ...form,
+          access_key: '50e76e02-9001-46e6-9165-8e83ca2ed060',
+          subject: `Service Request — ${service.title}`,
+          from_name: form.fullName,
           service_requested: service.title,
-          _subject: `Service Request — ${service.title}`,
-          _captcha: 'false',
+          ...form,
         }),
       })
       const data = await res.json()
-      if (data.success === 'true' || data.success === true) {
+      if (data.success) {
         setSubmitted(true)
       } else {
         setErrors({ _submit: 'Something went wrong. Please try again or email info@thewebhouse.africa.' })
