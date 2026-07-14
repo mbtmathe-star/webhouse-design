@@ -155,7 +155,7 @@ export default function ServiceRequestForm({ service }) {
     if (Object.keys(errs).length > 0) return
     setLoading(true)
     try {
-      const res = await fetch('/api/submit', {
+      const res = await fetch('/submit.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
