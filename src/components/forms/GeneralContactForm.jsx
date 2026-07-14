@@ -49,18 +49,9 @@ function SuccessCard({ onReset }) {
       <div className={styles.successIcon} aria-hidden="true">✓</div>
       <h3 className={styles.successHeading}>Enquiry Received</h3>
       <p className={styles.successMsg}>
-        Thank you for reaching out. Your enquiry has been captured in this
-        frontend demo. The next production phase can connect email, WhatsApp,
-        file storage or CRM handling.
+        Thank you for reaching out. The Web House team will review your message
+        and follow up via your preferred contact method shortly.
       </p>
-      <div className={styles.pendingNote}>
-        <strong>Frontend demo only</strong>
-        <p>
-          This is a frontend-only request flow. The next production phase can
-          connect request saving, email notifications, WhatsApp alerts, file
-          storage and admin request management.
-        </p>
-      </div>
       <button className={styles.resetBtn} onClick={onReset}>
         Send Another Enquiry
       </button>
@@ -75,6 +66,7 @@ export default function GeneralContactForm() {
   const [form, setForm] = useState(INIT)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   function handleChange({ target: { name, value } }) {
     setForm(prev => ({ ...prev, [name]: value }))
@@ -94,11 +86,34 @@ export default function GeneralContactForm() {
     return e
   }
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault()
     const errs = validate()
     setErrors(errs)
-    if (Object.keys(errs).length === 0) setSubmitted(true)
+    if (Object.keys(errs).length > 0) return
+    setLoading(true)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'e7992dd8-bd93-42b6-811a-c2aaedf2ee7b',
+          subject: 'General Enquiry — The Web House',
+          from_name: form.fullName,
+          ...form,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setErrors({ _submit: 'Something went wrong. Please try again or email info@thewebhouse.africa.' })
+      }
+    } catch {
+      setErrors({ _submit: 'Could not send. Please try again or email info@thewebhouse.africa.' })
+    } finally {
+      setLoading(false)
+    }
   }
 
   function reset() {
@@ -199,8 +214,13 @@ export default function GeneralContactForm() {
       </div>
 
       <div className={styles.formFooter}>
-        <button type="submit" className={styles.submitBtn}>
-          Send Enquiry
+        {errors._submit && (
+          <p className={styles.errorMsg} role="alert" style={{ marginBottom: '12px' }}>
+            {errors._submit}
+          </p>
+        )}
+        <button type="submit" className={styles.submitBtn} disabled={loading}>
+          {loading ? 'Sending…' : 'Send Enquiry'}
         </button>
         <p className={styles.formNote}>Fields marked * are required</p>
       </div>

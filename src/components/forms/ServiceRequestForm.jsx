@@ -91,18 +91,10 @@ function SuccessCard({ onReset }) {
       <div className={styles.successIcon} aria-hidden="true">✓</div>
       <h3 className={styles.successHeading}>Request Submitted</h3>
       <p className={styles.successMsg}>
-        Thank you for submitting your request. Our team will review your requirements
-        and prepare a customised quotation or invoice. We will contact you via
-        WhatsApp or email shortly.
+        Thank you for submitting your request. The Web House team will review
+        your requirements and follow up to prepare a customised quotation.
+        We will contact you via WhatsApp or email shortly.
       </p>
-      <div className={styles.pendingNote}>
-        <strong>Frontend demo only</strong>
-        <p>
-          This is a frontend-only request flow. The next production phase can connect
-          request saving, email notifications, WhatsApp alerts, file storage and admin
-          request management.
-        </p>
-      </div>
       <button className={styles.resetBtn} onClick={onReset}>
         Submit Another Request
       </button>
@@ -132,6 +124,7 @@ export default function ServiceRequestForm({ service }) {
   const [errors, setErrors] = useState({})
   const [files, setFiles] = useState([])
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
   const fileRef = useRef(null)
 
   function handleChange({ target: { name, value } }) {
@@ -155,11 +148,35 @@ export default function ServiceRequestForm({ service }) {
     return e
   }
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault()
     const errs = validate()
     setErrors(errs)
-    if (Object.keys(errs).length === 0) setSubmitted(true)
+    if (Object.keys(errs).length > 0) return
+    setLoading(true)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'e7992dd8-bd93-42b6-811a-c2aaedf2ee7b',
+          subject: `Service Request — ${service.title}`,
+          from_name: form.fullName,
+          service_requested: service.title,
+          ...form,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setErrors({ _submit: 'Something went wrong. Please try again or email info@thewebhouse.africa.' })
+      }
+    } catch {
+      setErrors({ _submit: 'Could not send. Please try again or email info@thewebhouse.africa.' })
+    } finally {
+      setLoading(false)
+    }
   }
 
   function reset() {
@@ -334,9 +351,14 @@ export default function ServiceRequestForm({ service }) {
             value={form.notes}
             onChange={handleChange}
           />
+          {errors._submit && (
+            <p className={styles.errorMsg} role="alert" style={{ marginBottom: '12px' }}>
+              {errors._submit}
+            </p>
+          )}
           <div className={styles.submitRow}>
-            <button type="submit" className={styles.submitBtn}>
-              Submit Request
+            <button type="submit" className={styles.submitBtn} disabled={loading}>
+              {loading ? 'Sending…' : 'Submit Request'}
             </button>
             <p className={styles.submitNote}>Fields marked * are required</p>
           </div>
